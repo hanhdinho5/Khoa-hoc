@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Course List</h4>
+                    <h4>Danh sách khóa học</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Instructors</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">All Course</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Giảng viên</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Tất cả các khóa học</a></li>
                 </ol>
             </div>
         </div>
@@ -33,21 +33,21 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Course List </h4>
-                                <a href="{{route('enrollment.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">Danh sách tất cả các khóa học </h4>
+                                <a href="{{route('enrollment.create')}}" class="btn btn-primary">+ Thêm mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example3" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
-                                                <th>{{__('#')}}</th>
-                                                <th>{{__('Course Name')}}</th>
-                                                <th>{{__('Instructor')}}</th>
-                                                <th>{{__('Category')}}</th>
-                                                <th>{{__('Price')}}</th>
-                                                <th>{{__('Status')}}</th>
-                                                <th>{{__('Action')}}</th>
+                                                <th>STT</th>
+                                                <th>Tên khóa học</th>
+                                                <th>Người hướng dẫn</th>
+                                                <th>Loại</th>
+                                                <th>Giá</th>
+                                                <th>Trạng thái</th>
+                                                <th>Hoạt động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -61,10 +61,10 @@
                                                 </td>
                                                 <td><strong>{{$d->price?'৳'.$d->price:'Free'}}</strong></td>
                                                 <td>
-                                                    <span class="badge 
-                                                    @if($d->status == 0) badge-warning 
-                                                    @elseif($d->status == 1) badge-danger 
-                                                    @elseif($d->status == 2) badge-success 
+                                                    <span class="badge
+                                                    @if($d->status == 0) badge-warning
+                                                    @elseif($d->status == 1) badge-danger
+                                                    @elseif($d->status == 2) badge-success
                                                     @endif">
                                                         @if($d->status == 0) {{__('Pending')}}
                                                         @elseif($d->status == 1) {{__('Inactive')}}

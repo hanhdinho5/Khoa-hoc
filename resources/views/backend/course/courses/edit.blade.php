@@ -16,14 +16,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Edit Course</h4>
+                    <h4>Chỉnh sửa khóa học</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Courses</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Course</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Khóa học</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Chỉnh sửa khóa học</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">Thông tin cơ bản</h5>
                     </div>
                     <div class="card-body">
                         @if(fullAccess())
@@ -44,20 +44,20 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">Trạng thái</label>
                                         <select class="form-control" name="status">
                                             <option value="0" @if(old('status',$course->status)==0) selected
-                                                @endif>Pending</option>
+                                                @endif>Chưa giải quyết</option>
                                             <option value="1" @if(old('status',$course->status)==1) selected
-                                                @endif>Inactive</option>
+                                                @endif>Không hoạt động</option>
                                             <option value="2" @if(old('status',$course->status)==2) selected
-                                                @endif>Active</option>
+                                                @endif>Tích cực</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Title</label>
+                                        <label class="form-label">Tiêu đề</label>
                                         <input type="text" class="form-control" name="courseTitle_en"
                                             value="{{old('courseTitle_en',$course->title_en)}}">
                                     </div>
@@ -67,14 +67,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">টাইটেল (বাংলায়)</label>
+                                        <label class="form-label">Title (in English)</label>
                                         <input type="text" class="form-control" name="courseTitle_bn"
                                             value="{{old('courseTitle_bn',$course->title_bn)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Description</label>
+                                        <label class="form-label">Miêu tả</label>
                                         <textarea class="form-control"
                                             name="courseDescription_en">{{old('courseDescription_en',$course->description_en)}}</textarea>
                                     </div>
@@ -94,14 +94,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Category</label>
+                                        <label class="form-label">Loại</label>
                                         <select class="form-control" name="categoryId">
                                             @forelse ($courseCategory as $c)
                                             <option value="{{$c->id}}" {{old('categoryId', $course->course_category_id) ==
                                                 $c->id?'selected':''}}>
                                                 {{$c->category_name}}</option>
                                             @empty
-                                            <option value="">No Category Found</option>
+                                            <option value="">Không tìm thấy danh mục nào</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -111,14 +111,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Instructor</label>
+                                        <label class="form-label">Giảng viên</label>
                                         <select class="form-control" name="instructorId">
                                             @forelse ($instructor as $i)
                                             <option value="{{$i->id}}" {{old('instructorId', $course->instructor_id) ==
                                                 $i->id?'selected':''}}>
                                                 {{$i->name_en}}</option>
                                             @empty
-                                            <option value="">No Instructor Found</option>
+                                            <option value="">Không tìm thấy giảng viên nào</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -128,17 +128,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Type</label>
+                                        <label class="form-label">Kiểu</label>
                                         <select class="form-control" name="courseType">
                                             <option value="free" @if(old('courseType', $course->type)=='free' ) selected
-                                                @endif>Free
+                                                @endif>Miễn phí
                                             </option>
                                             <option value="paid" @if(old('courseType', $course->type)=='paid' ) selected
-                                                @endif>Paid
+                                                @endif>Trả
                                             </option>
                                             <option value="subscription" @if(old('courseType', $course->type)
                                                 =='subscription' )
-                                                selected @endif>Subscription-based</option>
+                                                selected @endif>Dựa trên đăng kí</option>
                                         </select>
                                     </div>
                                     @if($errors->has('courseType'))
@@ -147,17 +147,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Difficulty</label>
+                                        <label class="form-label">Khó khăn</label>
                                         <select class="form-control" name="courseDifficulty">
                                             <option value="beginner" @if(old('courseDifficulty', $course->
-                                                difficulty)=='beginner' ) selected @endif>Beginner
+                                                difficulty)=='beginner' ) selected @endif>Người mới bắt đầu
                                             </option>
                                             <option value="intermediate" @if(old('courseDifficulty', $course->
-                                                difficulty)=='intermediate' ) selected @endif>Intermediate
+                                                difficulty)=='intermediate' ) selected @endif>Trung cấp
                                             </option>
                                             <option value="advanced" @if(old('courseDifficulty', $course->
                                                 difficulty)=='advanced' )
-                                                selected @endif>Advanced</option>
+                                                selected @endif>Trình độ cao</option>
                                         </select>
                                     </div>
                                     @if($errors->has('courseDifficulty'))
@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Price</label>
+                                        <label class="form-label">Giá</label>
                                         <input type="number" class="form-control" name="coursePrice"
                                             value="{{old('coursePrice', $course->price)}}">
                                     </div>
@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Old Price</label>
+                                        <label class="form-label">Giá cũ</label>
                                         <input type="number" class="form-control" name="courseOldPrice"
                                             value="{{old('courseOldPrice', $course->old_price)}}">
                                     </div>
@@ -186,7 +186,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Subscription Price</label>
+                                        <label class="form-label">Giá đăng kí</label>
                                         <input type="number" class="form-control" name="subscription_price"
                                             value="{{old('subscription_price')}}">
                                     </div>
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Start From</label>
+                                        <label class="form-label">Bắt đầu từ</label>
                                         <input type="date" class="form-control" name="start_from"
                                             value="{{old('start_from')}}">
                                     </div>
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Duration</label>
+                                        <label class="form-label">Khoảng thời gian</label>
                                         <input type="number" class="form-control" name="duration"
                                             value="{{old('duration',$course->duration)}}">
                                     </div>
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Number of Lesson</label>
+                                        <label class="form-label">Số bài học</label>
                                         <input type="number" class="form-control" name="lesson"
                                             value="{{old('lesson',$course->lesson)}}">
                                     </div>
@@ -228,7 +228,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Prerequisites</label>
+                                        <label class="form-label">Điều kiện tiên quyết</label>
                                         <textarea class="form-control"
                                             name="prerequisites_en">{{old('prerequisites_en',$course->prerequisites_en)}}</textarea>
                                     </div>
@@ -248,7 +248,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Course Code</label>
+                                        <label class="form-label">Mã khóa học</label>
                                         <input type="number" class="form-control" name="course_code"
                                             value="{{old('course_code', $course->course_code)}}">
                                     </div>
@@ -258,7 +258,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Thumbnail Video URL</label>
+                                        <label class="form-label">URL video hình thu nhỏ</label>
                                         <input type="text" class="form-control" name="thumbnail_video"
                                             value="{{old('thumbnail_video',$course->thumbnail_video)}}">
                                     </div>
@@ -268,16 +268,16 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Course Tag</label>
+                                        <label class="form-label">Thẻ khóa học</label>
                                         <select class="form-control" name="tag">
                                             <option value="popular" @if(old('tag', $course->tag)=='popular' ) selected
-                                                @endif>Popular
+                                                @endif>Phổ biến
                                             </option>
                                             <option value="featured" @if(old('tag', $course->tag)=='featured' ) selected
-                                                @endif>Featured
+                                                @endif>Nổi bật
                                             </option>tag
                                             <option value="upcoming" @if(old('tag', $course->tag)=='upcoming' ) selected
-                                                @endif>Upcoming</option>
+                                                @endif>Sắp tới</option>
                                         </select>
                                     </div>
                                     @if($errors->has('tag'))
@@ -285,20 +285,20 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label class="form-label">Image</label>
+                                    <label class="form-label">Hình ảnh</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label class="form-label">Thumbnail Image</label>
+                                    <label class="form-label">Hình ảnh thu nhỏ</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="thumbnail_image">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Nộp</button>
+                                    <button type="submit" class="btn btn-light">Hủy bỏ</button>
                                 </div>
                             </div>
                         </form>
@@ -354,7 +354,7 @@
                                             @forelse ($courseCategory as $c)
                                             <option value="{{$c->id}}" {{old('categoryId', $course->course_category_id) ==
                                                 $c->id?'selected':''}}>
-                                                {{$c->category_name}}</option> 
+                                                {{$c->category_name}}</option>
                                             @empty
                                             <option value="">No Category Found</option>
                                             @endforelse

@@ -23,14 +23,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Add User</h4>
+                    <h4>Thêm người dùng</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('user.index')}}">Users</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit User</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('user.index')}}">Người dùng</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Chỉnh sửa người dùng</a></li>
                 </ol>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">Thông tin cơ bản</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('user.update', encryptor('encrypt', $user->id))}}" method="post"
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Name</label>
+                                        <label class="form-label">Tên</label>
                                         <input type="text" class="form-control" name="userName_en"
                                             value="{{old('userName_en', $user->name_en)}}">
                                     </div>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Phone Number</label>
+                                        <label class="form-label">Số điện thoại</label>
                                         <input type="tel" class="form-control" name="contactNumber_en"
                                             value="{{old('contactNumber_en', $user->contact_en)}}">
                                     </div>
@@ -94,14 +94,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Role</label>
+                                        <label class="form-label">Vai trò</label>
                                         <select class="form-control" name="roleId">
                                             @forelse ($role as $r)
                                             <option value="{{$r->id}}" {{old('roleId', $user->role_id) ==
                                                 $r->id?'selected':''}}>
                                                 {{$r->name}}</option>
                                             @empty
-                                            <option value="">No Role Found</option>
+                                            <option value="">Không tìm thấy vai trò</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -111,35 +111,35 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Full Access</label>
+                                        <label class="form-label">Truy cập đầy đủ</label>
                                         <select class="form-control" name="fullAccess">
                                             <option value="0" @if(old('fullAccess', $user->full_access)==0) selected
-                                                @endif>No</option>
+                                                @endif>Không</option>
                                             <option value="1" @if(old('fullAccess', $user->full_access)==1) selected
-                                                @endif>Yes</option>
+                                                @endif>Đúng</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">Trạng thái hoạt động</label>
                                         <select class="form-control" name="status">
                                             <option value="1" @if(old('status', $user->status)==1) selected
-                                                @endif>Active</option>
+                                                @endif>Hoạt động</option>
                                             <option value="0" @if(old('status', $user->status)==0) selected
-                                                @endif>Inactive</option>
+                                                @endif>Không hoạt động</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <label class="form-label">Image</label>
+                                    <label class="form-label">Hình ảnh</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">Mật khẩu</label>
                                         <input type="password" class="form-control" name="password">
                                     </div>
                                     @if($errors->has('password'))
@@ -147,8 +147,8 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">Nộp</button>
+                                    <button type="submit" class="btn btn-light">Hủy bỏ</button>
                                 </div>
                             </div>
                         </form>

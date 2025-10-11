@@ -18,14 +18,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Category List</h4>
+                    <h4>Danh sách danh mục</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.index')}}">Categories</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.index')}}">All Category</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.index')}}">Danh mục</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.index')}}">Tất cả danh mục</a></li>
                 </ol>
             </div>
         </div>
@@ -34,9 +34,8 @@
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
-                    <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary mr-1 show active">Chế độ xem danh sách</a></li>
+                    <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Chế độ xem lưới</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -44,8 +43,8 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Categories List </h4>
-                                <a href="{{route('courseCategory.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">Danh sách tất cả các danh mục </h4>
+                                <a href="{{route('courseCategory.create')}}" class="btn btn-primary">+ Thêm mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -53,10 +52,10 @@
                                         <thead>
                                             <tr>
                                                 <th>{{__('#')}}</th>
-                                                <th>{{__('Category Name')}}</th>
-                                                <th>{{__('Status')}}</th>
-                                                <th>{{__('Category Image')}}</th>
-                                                <th>{{__('Action')}}</th>
+                                                <th>{{__('Tên danh mục')}}</th>
+                                                <th>{{__('Trạng thái')}}</th>
+                                                <th>{{__('Hình ảnh danh mục')}}</th>
+                                                <th>{{__('Hoạt động')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,7 +90,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="7" class="text-center">No Category Found</th>
+                                                <th colspan="7" class="text-center">Không tìm thấy danh mục</th>
                                             </tr>
                                             @endforelse
                                         </tbody>
@@ -113,9 +112,9 @@
                                             <div class="dropdown-menu dropdown-menu-right border py-0">
                                                 <div class="py-2">
                                                     <a class="dropdown-item"
-                                                        href="{{route('user.edit', encryptor('encrypt',$d->id))}}">Edit</a>
+                                                        href="{{route('user.edit', encryptor('encrypt',$d->id))}}">Chỉnh sửa</a>
                                                     <a class="dropdown-item text-danger"
-                                                        href="javascript:void(0);">Delete</a>
+                                                        href="javascript:void(0);">Xóa</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,18 +131,18 @@
                                                     <span>#Sl.</span><strong>{{$d->id}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Status:</span>
+                                                    <span class="mb-0">Trạng thái:</span>
                                                     <strong><span class="badge {{$d->category_status==1?"
                                                         badge-success":"badge-danger"}}">@if($d->category_status==1){{__('Active')}}
                                                     @else{{__('Inactive')}} @endif</span></strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Created At :</span>
+                                                    <span class="mb-0">Được tạo :</span>
                                                     <strong>{{$d->created_at}}</strong>
                                                 </li>
                                             </ul>
                                             <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                href="about-student.html">Read More</a>
+                                                href="about-student.html">Đọc thêm</a>
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +152,7 @@
                                 <div class="card card-profile">
                                     <div class="card-body pt-2">
                                         <div class="text-center">
-                                            <p class="mt-3 px-4">Category Not Found</p>
+                                            <p class="mt-3 px-4">Không tìm thấy danh mục</p>
                                         </div>
                                     </div>
                                 </div>

@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Enrollments</h4>
+                    <h4>Tuyển sinh</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">Enrollments</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">All Enrollment</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">Tuyển sinh</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">Tất cả tuyển sinh</a></li>
                 </ol>
             </div>
         </div>
@@ -33,8 +33,8 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Enrollments List </h4>
-                                <a href="{{route('enrollment.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">DANH SÁCH TẤT CẢ ĐƠN ĐĂNG KÍ </h4>
+                                <a href="{{route('enrollment.create')}}" class="btn btn-primary">+ Thêm mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -42,12 +42,12 @@
                                         <thead>
                                             <tr>
                                                 <th>{{__('#')}}</th>
-                                                <th>{{__('Student Name')}}</th>
-                                                <th>{{__('Course Name')}}</th>
-                                                <th>{{__('Course Image')}}</th>
-                                                <th>{{__('Course Value')}}</th>
-                                                <th>{{__('Enrollment Date')}}</th>
-                                                <th>{{__('Action')}}</th>
+                                                <th>{{__('Tên học sinh')}}</th>
+                                                <th>{{__('Tên khóa học')}}</th>
+                                                <th>{{__('Hình ảnh khóa học')}}</th>
+                                                <th>{{__('Giá trị khóa học')}}</th>
+                                                <th>{{__('Ngày nhập học')}}</th>
+                                                <th>{{__('Hoạt động')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -82,7 +82,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="6" class="text-center">No Enrollment Found</th>
+                                                <th colspan="6" class="text-center">Không tìm thấy đăng kí</th>
                                             </tr>
                                             @endforelse
                                         </tbody>

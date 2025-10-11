@@ -19,14 +19,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Add Category</h4>
+                    <h4>Thêm danh mục</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.index')}}">Categories</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.create')}}">Add Category</a>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.index')}}">Thể loại</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('courseCategory.create')}}">Thêm danh mục</a>
                     </li>
                 </ol>
             </div>
@@ -36,7 +36,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Category Info</h5>
+                        <h5 class="card-title">Thông tin danh mục</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('courseCategory.store')}}" method="post" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Category Name</label>
+                                        <label class="form-label">Tên danh mục</label>
                                         <input type="text" class="form-control" name="category_name"
                                             value="{{old('category_name')}}">
                                     </div>
@@ -54,24 +54,24 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">Trạng thái</label>
                                         <select class="form-control" name="category_status">
-                                            <option value="1" @if(old('category_status')==1) selected @endif>Active
+                                            <option value="1" @if(old('category_status')==1) selected @endif>Tích cực
                                             </option>
-                                            <option value="0" @if(old('category_status')==0) selected @endif>Inactive
+                                            <option value="0" @if(old('category_status')==0) selected @endif>Không hoạt động
                                             </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <label class="form-label">Image</label>
+                                    <label class="form-label">Hình ảnh</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="category_image">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">Nộp</button>
+                                    <button type="submit" class="btn btn-light">Hủy bỏ</button>
                                 </div>
                             </div>
                         </form>

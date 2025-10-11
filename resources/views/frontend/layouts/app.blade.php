@@ -63,10 +63,10 @@
                 <div class="collapse navbar-collapse d-none d-xl-block d-none d-xl-block" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                            <a class="nav-link" aria-current="page" href="{{route('home')}}">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{route('searchCourse')}}">Courses</a>
+                            <a class="nav-link" aria-current="page" href="{{route('searchCourse')}}">Khóa học</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{route('about')}}">About</a>
@@ -77,7 +77,7 @@
                             </a>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contact')}}">Contact</a>
+                            <a class="nav-link" href="{{route('contact')}}">Liên hệ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('dashboard')}}">Admin</a>
@@ -130,14 +130,14 @@
                                     alt="Student Profile" height="48" width="48"/>
                             </a>
                             <div class="dropdown-content">
-                                <a href="{{route('student_profile')}}">Profile</a>
+                                <a href="{{route('student_profile')}}">Hồ sơ</a>
                                 <a href="{{route('studentdashboard')}}">Dashboard</a>
-                                <a href="{{route('studentlogOut')}}" class="text-danger">Logout</a>
+                                <a href="{{route('studentlogOut')}}" class="text-danger">Đăng xuất</a>
                             </div>
                         </div>
                         @else
-                        <a href="{{route('studentLogin')}}" class="button button--text">Sign in</a>
-                        <a href="{{route('studentRegister')}}" class="button button--dark">Sign Up</a>
+                        <a href="{{route('studentLogin')}}" class="button button--text">Đăng nhập</a>
+                        <a href="{{route('studentRegister')}}" class="button button--dark">Đang ký</a>
                         @endif
                     </div>
                 </div>
@@ -177,22 +177,22 @@
                             <ul class="navbar-mobile__menu-list">
                                 <li class="active navbar-mobile__menu-item">
                                     <a href="{{route('home')}}">
-                                        <span class="navbar-mobile__menu-link"> Home</span>
+                                        <span class="navbar-mobile__menu-link"> Trang chủ</span>
                                     </a>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="{{route('searchCourse')}}">
-                                        <span class="navbar-mobile__menu-link"> Courses </span>
+                                        <span class="navbar-mobile__menu-link"> Khóa học </span>
                                     </a>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="{{route('about')}}">
-                                        <span class="navbar-mobile__menu-link"> About </span>
+                                        <span class="navbar-mobile__menu-link"> Giới thiệu </span>
                                     </a>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="#">
-                                        <span class="navbar-mobile__menu-link"> Pages </span>
+                                        <span class="navbar-mobile__menu-link"> Trang </span>
                                         <span class="navbar-mobile__menu-dropicon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -203,15 +203,15 @@
                                         </span>
                                     </a>
                                     <ul class="navbar-mobile__menu-dropmenu">
-                                        <li><a href="{{route('searchCourse')}}">Courses</a></li>
-                                        <li><a href="{{route('student_profile')}}">Student Profile</a></li>
+                                        <li><a href="{{route('searchCourse')}}">Khóa học</a></li>
+                                        <li><a href="{{route('student_profile')}}">Hồ sơ học viên</a></li>
                                         <li><a href="{{route('about')}}">About</a></li>
-                                        <li><a href="{{route('contact')}}">Contact</a></li>
+                                        <li><a href="{{route('contact')}}">Liên hệ</a></li>
                                     </ul>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="{{route('contact')}}">
-                                        <span class="navbar-mobile__menu-link"> Contact </span>
+                                        <span class="navbar-mobile__menu-link"> Liên hệ </span>
                                     </a>
                                 </li>
                             </ul>

@@ -10,15 +10,19 @@ class SearchCourseController extends Controller
 {
     public function index(Request $request)
     {
-        
+        $textS = '';
+        if ($request->input('textSearch'))
+            $textS = $request->input('textSearch');
         $category = CourseCategory::get();
         $selectedCategories = $request->input('categories', []);
 
-        $course = Course::where('status', 2)->when($selectedCategories, function ($query) use ($selectedCategories) {
+        $course = Course::where('status', 2)->where('title', 'like', '%' . $textS . '%')
+            ->when($selectedCategories, function ($query) use ($selectedCategories) {
                 $query->whereIn('course_category_id', $selectedCategories);
-            })->get();
+            })->paginate(6);
+        // dd ($course);
 
-            
+
 
         $allCourse = Course::where('status', 2)->get();
 

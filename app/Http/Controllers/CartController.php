@@ -18,17 +18,17 @@ class CartController extends Controller
 
     public function cart()
     {
-        return view('frontend.cart'); 
+        return view('frontend.cart');
     }
 
     public function addToCart($id)
     {
         $course = Course::findOrFail($id);
 
-        $cart = session()->get('cart', []);
+        $cart = session()->get('cart', []);// Lấy cart, nếu chx có thì lấy []
 
         if (isset($cart[$id])) {
-            $message="You have already added this course in your cart.";
+            $message="Bạn đã thêm khóa học này vào giỏ hàng.";
             return redirect()->back()->with('warning', $message);
             //$cart[$id]['quantity']++;
         } else {
@@ -41,9 +41,9 @@ class CartController extends Controller
                 "difficulty" => $course->difficulty,
                 "instructor" => $course->instructor ? $course->instructor->name_en : 'Unknown Instructor',
             ];
-            session()->put('cart', $cart);
+            session()->put('cart', $cart);// Put thêm phần tử vào cart
             $this->cart_total();
-            $message="Product added to cart successfully!";
+            $message="Sản phẩm đã được thêm vào giỏ hàng thành công!";
             return redirect()->back()->with('success', $message);
         }
     }
@@ -57,7 +57,7 @@ class CartController extends Controller
                 session()->put('cart', $cart);
             }
             $this->cart_total();
-            session()->flash('success', 'Product removed successfully');
+            session()->flash('success', 'Xóa khóa học khỏi giỏ thành công!');
         }
     }
 
@@ -87,30 +87,30 @@ class CartController extends Controller
             session()->put('cart_details', $cart_data);
         }
 
-        
+
     }
 
-    public function coupon_check(Request $request){
-        $coupon = Coupon::where('code',$request->coupon)
-                        ->where('valid_from','<=',date('Y-m-d'))
-                        ->where('valid_until','>=',date('Y-m-d'))
-                        ->pluck('discount')->toArray();
+    // public function coupon_check(Request $request){
+    //     $coupon = Coupon::where('code',$request->coupon)
+    //                     ->where('valid_from','<=',date('Y-m-d'))
+    //                     ->where('valid_until','>=',date('Y-m-d'))
+    //                     ->pluck('discount')->toArray();
 
-        if(!empty($coupon)){
-            $cart_total=session('cart_details')['cart_total'];
-            $discount=($cart_total*($coupon[0]/100));
-            $tax=(($cart_total-$discount)*0.15);
-            $total_amount=(($cart_total+$tax)-$discount);
-            $coupondata=array(
-                'cart_total'=>$cart_total,
-                'coupon_code'=>$request->coupon,
-                'discount'=>$coupon[0],
-                'discount_amount'=>$discount,
-                'tax'=>$tax,
-                'total_amount'=>$total_amount
-            );
-            session()->put('cart_details', $coupondata);
-        }
-        return redirect()->back()->with('success', 'Coupon Applied successfully!');
-    }
+    //     if(!empty($coupon)){
+    //         $cart_total=session('cart_details')['cart_total'];
+    //         $discount=($cart_total*($coupon[0]/100));
+    //         $tax=(($cart_total-$discount)*0.15);
+    //         $total_amount=(($cart_total+$tax)-$discount);
+    //         $coupondata=array(
+    //             'cart_total'=>$cart_total,
+    //             'coupon_code'=>$request->coupon,
+    //             'discount'=>$coupon[0],
+    //             'discount_amount'=>$discount,
+    //             'tax'=>$tax,
+    //             'total_amount'=>$total_amount
+    //         );
+    //         session()->put('cart_details', $coupondata);
+    //     }
+    //     return redirect()->back()->with('success', 'Đã áp dụng phiếu giảm giá thành công!');
+    // }
 }
