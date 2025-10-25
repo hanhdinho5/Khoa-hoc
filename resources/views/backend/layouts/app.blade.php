@@ -59,7 +59,7 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search"
+                                        <input class="form-control" type="search" placeholder="Tìm kiếm"
                                             aria-label="Search">
                                     </form>
                                 </div>
@@ -190,7 +190,7 @@
         <div class="dlabnav">
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Admin Panel</li>
+                    <li class="nav-label first">Quản trị viên</li>
                     <li><a class="ai-icon" href="{{route('dashboard')}}" aria-expanded="false">
                             <i class="las la-tachometer-alt"></i>
                             <span class="nav-text">Dashboard</span>
@@ -198,54 +198,53 @@
                     </li>
                     <li><a class="ai-icon" href="{{route('home')}}" aria-expanded="false">
                             <i class="las la-home"></i>
-                            <span class="nav-text">Home</span>
+                            <span class="nav-text">Trang chủ</span>
                         </a>
                     </li>
-                    <li class="nav-label">Main Menu</li>
+                    <li class="nav-label">Menu chính</li>
                     <li><a class="" href="{{route('role.index')}}" aria-expanded="false">
                             <i class="las la-cog"></i>
-                            <span class="nav-text">Permissions</span>
+                            <span class="nav-text">Nhóm quyền</span>
                         </a>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="la la-universal-access"></i>
-                            <span class="nav-text">Roles</span>
+                            <span class="nav-text">Vai trò</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('user.index')}}"><i class="la la-users"></i>Users</a></li>
+                            <li><a href="{{route('user.index')}}"><i class="la la-users"></i>Nhân sự</a></li>
                             <li><a href="{{route('instructor.index')}}"><i
-                                        class="las la-chalkboard-teacher"></i>Instructors</a>
+                                        class="las la-chalkboard-teacher"></i>Giảng viên</a>
                             </li>
-                            <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>Students</a></li>
+                            <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>Học viên</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="las la-school"></i>
-                            <span class="nav-text">Courses</span>
+                            <span class="nav-text">Khóa học</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('courseCategory.index')}}"><i class="la la-list"></i>Course
-                                    Category</a>
+                            <li><a href="{{route('courseCategory.index')}}"><i class="la la-list"></i>Danh mục</a>
                             </li>
-                            <li><a href="{{route('courseList')}}"><i class="las la-school"></i>Courses List</a></li>
-                            <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>All Courses</a></li>
-                            <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>Lessons</a></li>
-                            <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>Materials</a></li>
+                            <li><a href="{{route('courseList')}}"><i class="las la-school"></i>Danh sách</a></li>
+                            <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>Tất cả khóa</a></li>
+                            <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>Bài học</a></li>
+                            <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>Tài liệu</a></li>
                         </ul>
                     </li>
                     <li><a class="" href="{{route('enrollment.index')}}" aria-expanded="false">
                             <i class="las la-bullseye"></i>
-                            <span class="nav-text">Enrollments</span>
+                            <span class="nav-text">Tuyển sinh</span>
                         </a>
                     </li>
                     <li><a class="" href="{{route('event.index')}}" aria-expanded="false">
                             <i class="las la-icons"></i>
-                            <span class="nav-text">Events</span>
+                            <span class="nav-text">Sự kiện</span>
                         </a>
                     </li>
                     <li><a class="" href="{{route('coupon.index')}}" aria-expanded="false">
                             <i class="las la-tags"></i>
-                            <span class="nav-text">Coupons</span>
+                            <span class="nav-text">Giảm giá</span>
                         </a>
                     </li>
                     {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -306,7 +305,7 @@
                         <i class="las la-home"></i><span class="nav-text">Home</span>
                     </a>
                 </li>
-                <li class="nav-label">Main Menu</li>
+                <li class="nav-label">Menu chính</li>
                 <li><a href="{{route('instructor.index')}}">
                         <i class="las la-chalkboard-teacher"></i>Instructors List
                     </a>

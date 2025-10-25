@@ -1,9 +1,9 @@
 @extends('backend.layouts.app')
-@section('title', 'Instructor List')
+@section('title', 'Giảng viên')
 
 @push('styles')
 <!-- Datatable -->
-<link href="{{asset('public/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+<link href="{{asset('vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Instructor List</h4>
+                    <h4>Danh sách giảng viên</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">Instructors</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">All Instructor</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Trang chủ</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">Giảng viên</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">Tất cả giảng viên</a></li>
                 </ol>
             </div>
         </div>
@@ -31,9 +31,8 @@
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
-                    <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary mr-1 show active">Xem dạng danh sách</a></li>
+                    <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Xem dạng lưới</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -41,8 +40,8 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Instructors List </h4>
-                                <a href="{{route('instructor.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">Danh sách giảng viên</h4>
+                                <a href="{{route('instructor.create')}}" class="btn btn-primary">+ Thêm mới</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -63,7 +62,7 @@
                                             <tr>
                                                 <td>
                                                     <img class="rounded-circle" width="35" height="35"
-                                                        src="{{asset('public/uploads/users/'.$d->image)}}" alt="">
+                                                        src="{{asset('uploads/users/'.$d->image)}}" alt="">
                                                 </td>
                                                 <td><strong>{{$d->name_en}}</strong></td>
                                                 <td>{{$d->email}}</td>
@@ -91,7 +90,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="7" class="text-center">No Instructor Found</th>
+                                                <th colspan="7" class="text-center">Không tìm thấy giảng viên</th>
                                             </tr>
                                             @endforelse
                                         </tbody>
@@ -123,7 +122,7 @@
                                     <div class="card-body pt-2">
                                         <div class="text-center">
                                             <div class="profile-photo">
-                                                <img src="{{asset('public/uploads/instructors/'.$d->image)}}" width="100"
+                                                <img src="{{asset('uploads/instructors/'.$d->image)}}" width="100"
                                                     height="100" class="rounded-circle" alt="">
                                             </div>
                                             <h3 class="mt-4 mb-1">{{$d->name_en}}</h3>
@@ -174,7 +173,7 @@
 
 @push('scripts')
 <!-- Datatable -->
-<script src="{{asset('public/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('public/js/plugins-init/datatables.init.js')}}"></script>
+<script src="{{asset('vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/plugins-init/datatables.init.js')}}"></script>
 
 @endpush

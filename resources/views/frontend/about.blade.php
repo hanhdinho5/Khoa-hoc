@@ -1,5 +1,5 @@
 @extends('frontend.layouts.app')
-@section('title', 'About')
+@section('title', 'Giới thiệu')
 @section('header-attr') class="nav-shadow" @endsection
 
 @section('content')
@@ -9,10 +9,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">Home</a>
+                    <a href="index.html" class="fs-6 text-secondary">Trang chủ</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="about.html" class="fs-6 text-secondary">About</a>
+                    <a href="about.html" class="fs-6 text-secondary">Giới thiệu</a>
                 </li>
             </ol>
         </nav>

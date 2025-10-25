@@ -15,7 +15,6 @@ class Controller extends BaseController
     {
         $this->notice = new Toastr();
     }
-    
+
     use AuthorizesRequests, ValidatesRequests;
 }
- 

@@ -26,12 +26,12 @@ class AuthenticationController extends Controller
             $user->contact_en = $request->contact_en;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role_id = 4;
+            $user->role_id = 3;
             // dd($request->all());
             if ($user->save())
-                return redirect('login')->with('success', 'Successfully Registered');
+                return redirect('login')->with('success', 'Tạo tài khoản thành công');
             else
-                return redirect('login')->with('danger', 'Please Try Again');
+                return redirect('login')->with('danger', 'Vui lòng thử lại');
         } catch (Exception $e) {
             dd($e);
             return redirect('login')->with('danger', 'Please Try Again');
@@ -51,16 +51,16 @@ class AuthenticationController extends Controller
                 if ($user->status == 1) {
                     if (Hash::check($request->password, $user->password)) {
                         $this->setSession($user);
-                        return redirect()->route('dashboard')->with('success', 'Successfully Logged In');
+                        return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
                     } else
-                        return redirect()->route('login')->with('error', 'Username or Password is wrong!');
+                        return redirect()->route('login')->with('error', 'Tên người dùng hoặc mật khẩu không đúng!');
                 } else
-                    return redirect()->route('login')->with('error', 'You are not an active user! Please contact to Authority');
+                    return redirect()->route('login')->with('error', 'Bạn không phải là người dùng đang hoạt động! Vui lòng liên hệ với Cơ quan quản lý');
             } else
-                return redirect()->route('login')->with('error', 'Username or Password is wrong!');
+                return redirect()->route('login')->with('error', 'Tên người dùng hoặc mật khẩu không đúng!');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->route('login')->with('error', 'Username or Password is wrong!');
+            return redirect()->route('login')->with('error', 'Tên người dùng hoặc mật khẩu không đúng!');
         }
     }
 

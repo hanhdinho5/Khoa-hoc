@@ -116,30 +116,30 @@
                             <button class="nav-link active font-para--lg" id="pills-courseoverview-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-courseoverview" type="button" role="tab"
                                 aria-controls="pills-courseoverview" aria-selected="true">
-                                Overview
+                                Tổng quan
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link font-para--lg" id="pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                                 aria-selected="false">
-                                Curriculum
+                                Chương trình
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link font-para--lg" id="pills-c-instructor-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-c-instructor" type="button" role="tab"
                                 aria-controls="pills-c-instructor" aria-selected="false">
-                                Instructor
+                                Giảng viên
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link me-0 font-para--lg" id="pills-course-review-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab"
                                 aria-controls="pills-course-review-tab" aria-selected="false">
-                                Review
+                                Đánh giá
                             </button>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <div class="tab-content course-overview-content" id="pills-tabContentTwo">
@@ -149,19 +149,19 @@
                             aria-labelledby="pills-courseoverview-tab">
                             <div class="row course-overview-main mt-4">
                                 <div class="course-overview-main-item">
-                                    <h6 class="font-title--card">Description</h6>
+                                    <h6 class="font-title--card">Miêu tả</h6>
                                     <p class="mb-3 font-para--lg">{{$course->description_en}}</p>
                                 </div>
                                 <div class="course-overview-main-item">
-                                    <h6 class="font-title--card">Requirments</h6>
+                                    <h6 class="font-title--card">Yêu cầu</h6>
                                     <p class="mb-2 font-para--lg">{{$course->prerequisites_en}}</p>
                                 </div>
                                 <div class="course-overview-main-item">
-                                    <h6 class="font-title--card">Who This Course is For</h6>
+                                    <h6 class="font-title--card">Khóa học này danh cho ai</h6>
                                     <p class="mb-2 font-para--lg">{{$course->description_en}}</p>
                                 </div>
                                 <div class="course-overview-main-item mb-0">
-                                    <h6 class="font-title--card">What You Will be Learn</h6>
+                                    <h6 class="font-title--card">Những gì bạn sẽ học được</h6>
                                     <p class="mb-2 font-para--lg">{{$course->description_en}}</p>
                                 </div>
                             </div>
@@ -2313,54 +2313,60 @@
                     <div class="cart">
                         <div class="cart__price">
                             <div class="current-price">
-                                <h3 class="font-title--sm">{{$course->price?'৳'.$course->price:'Free'}}</h3>
-                                <p><del>{{$course->old_price?'৳'.$course->old_price:''}}</del></p>
+                                <h3 class="font-title--sm">{{$course->price? number_format($course->price, 0, ',', '.') . " VNĐ":'Miễn phí'}}</h3>
+                                {{-- <p><del>{{$course->old_price?number_format($course->old_price, 0, ',', '.') . ' VNĐ':''}}</del></p> --}}
                             </div>
                             <div class="current-discount">
-                                <p class="font-para--md">90% off</p>
+                                @if($course->price)
+                                <p class="font-para--md">40% off</p>
+                                @else
+                                <p class="font-para--md">Free 100%</p>
+                                @endif
                             </div>
                         </div>
                         <div class="cart__checkout-process">
-                            <p class="time-left text-center"><span>5 hours</span> to remaining this price</p>
+                            @if ($course->price)
+                            <p class="time-left text-center">Còn 5 giờ nữa là hết giá này</p>
+                            @endif
                             <form action="#">
                                 <a href="{{route('add.to.cart', $course->id)}}"
-                                    class="text-white button button-lg button--primary w-100">Add to Cart</a>
+                                    class="text-white button button-lg button--primary w-100">Thêm giỏ hàng</a>
                                 <a href="{{route('checkout')}}"
-                                    class="button button-lg button--primary-outline mt-3 w-100">Buy Now</a>
+                                    class="button button-lg button--primary-outline mt-3 w-100">Mua ngay</a>
                             </form>
                         </div>
                         <div class="cart__includes-info">
-                            <h6 class="font-title--card">This course includes:</h6>
+                            <h6 class="font-title--card">Khóa học này bao gồm:</h6>
                             <ul>
                                 <li>
                                     <span><img src="{{asset('frontend/dist/images/icon/dollar.png')}}"
                                             alt="dollar" /></span>
-                                    <p class="font-para--md">Full Lifetime Access</p>
+                                    <p class="font-para--md">Truy cập trọn đời</p>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('frontend/dist/images/icon/clock-2.png')}}"
                                             alt="clock" /></span>
-                                    <p class="font-para--md">30 Days Money Back Guarantee</p>
+                                    <p class="font-para--md">Đảm bảo hoàn tiền trong 30 ngày</p>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('frontend/dist/images/icon/paper-plus.png')}}"
                                             alt="paper-plus" /></span>
-                                    <p class="font-para--md">Free Exercises File</p>
+                                    <p class="font-para--md">Tập tin bài tập miễn phí</p>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('frontend/dist/images/icon/airplay.png')}}"
                                             alt="airplay" /></span>
-                                    <p class="font-para--md">Access on Mobile , Tablet and TV</p>
+                                    <p class="font-para--md">Truy cập trên Mobile, Laptop,..</p>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('frontend/dist/images/icon/clipboard.png')}}"
                                             alt="clipboard" /></span>
-                                    <p class="font-para--md">Certificate of Completion</p>
+                                    <p class="font-para--md">Giấy chứng nhận hoàn thành</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="cart__share-content">
-                            <h6 class="font-title--card">Share This Course</h6>
+                            <h6 class="font-title--card">Chia sẻ khóa học này</h6>
                             <ul class="social-icons social-icons--outline">
                                 <li>
                                     <a href="#">
@@ -2414,7 +2420,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="facebook.com">
                                         <svg width="9" height="18" viewBox="0 0 9 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path

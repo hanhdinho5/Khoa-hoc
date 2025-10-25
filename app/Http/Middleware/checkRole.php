@@ -33,7 +33,7 @@ class checkRole
                     if (Permission::where('role_id', $user->role_id)->where('name', $request->route()->getName())->exists())
                         return $next($request);
                     else {
-                        \Toastr::warning("You don't have permission to access this page");
+                        \Toastr::warning("Bạn không có quyền truy cập vào trang này");
                         return redirect()->back();
                     }
                 }

@@ -19,13 +19,13 @@ class User extends Authenticatable
         'password',
     ];
 
-    // The attributes that should be hidden for serialization.
+    //Các thuộc tính cần được ẩn để tuần tự hóa.
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    // The attributes that should be cast.
+    //Các thuộc tính cần được ép kiểu.
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -36,9 +36,13 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function instructors()
+    // public function instructors()
+    // {
+    //     $this->belongsTo(Instructor::class);
+    // }
+    public function instructor()
     {
-        $this->belongsTo(Instructor::class);
+        return $this->belongsTo(Instructor::class, 'instructor_id');
     }
 
     public function discussion()

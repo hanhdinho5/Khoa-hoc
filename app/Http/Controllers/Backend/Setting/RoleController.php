@@ -74,11 +74,11 @@ class RoleController extends Controller
             $data->name=$request->Name;
             $data->identity=$request->Identity;
             if($data->save()){
-                $this->notice::success('Successfully updated');
+                $this->notice::success('Cập nhật thành công');
                 return redirect()->route('role.index');
             }
         }catch(Exception $e){
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             //dd($e);
             return redirect()->back()->withInput();
         }
