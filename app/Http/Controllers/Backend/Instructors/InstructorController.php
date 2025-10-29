@@ -78,10 +78,10 @@ class InstructorController extends Controller
                     return redirect()->route('instructor.index');
                 }
             } else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -96,7 +96,7 @@ class InstructorController extends Controller
     public function frontShow($id)
     {
         $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
-        // dd($course); 
+        // dd($course);
         return view('frontend.instructorProfile', compact('instructor'));
     }
 
@@ -154,10 +154,10 @@ class InstructorController extends Controller
                     return redirect()->route('instructor.index');
                 }
             }
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 

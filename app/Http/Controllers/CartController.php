@@ -25,15 +25,15 @@ class CartController extends Controller
     {
         $course = Course::findOrFail($id);
 
-        $cart = session()->get('cart', []);// Lấy cart, nếu chx có thì lấy []
+        $cart = session()->get('cart', []); // Lấy cart, nếu chx có thì lấy []
 
         if (isset($cart[$id])) {
-            $message="Bạn đã thêm khóa học này vào giỏ hàng.";
+            $message = "Bạn đã thêm khóa học này vào giỏ hàng.";
             return redirect()->back()->with('warning', $message);
             //$cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
-                "title_en" => $course->title_en,
+                "title" => $course->title,
                 "quantity" => 1,
                 "price" => $course->price,
                 "old_price" => $course->old_price,
@@ -41,9 +41,9 @@ class CartController extends Controller
                 "difficulty" => $course->difficulty,
                 "instructor" => $course->instructor ? $course->instructor->name_en : 'Unknown Instructor',
             ];
-            session()->put('cart', $cart);// Put thêm phần tử vào cart
+            session()->put('cart', $cart); // Put thêm phần tử vào cart
             $this->cart_total();
-            $message="Sản phẩm đã được thêm vào giỏ hàng thành công!";
+            $message = "Sản phẩm đã được thêm vào giỏ hàng thành công!";
             return redirect()->back()->with('success', $message);
         }
     }
@@ -61,33 +61,32 @@ class CartController extends Controller
         }
     }
 
-    public function cart_total(){
+    public function cart_total()
+    {
         $total = 0;
-        if (session('cart')){
-            foreach (session('cart') as $id => $details){
-               $total += $details['price'] * $details['quantity'];
+        if (session('cart')) {
+            foreach (session('cart') as $id => $details) {
+                $total += $details['price'] * $details['quantity'];
             }
         }
-        if(isset(session('cart_details')['coupon_code'])){
-            $cart_total=$total;
-            $discount=($cart_total*(session('cart_details')['discount']/100));
-            $tax=(($cart_total-$discount)*0.15);
-            $total_amount=(($cart_total+$tax)-$discount);
-            $coupondata=array(
-                'cart_total'=>$cart_total,
-                'coupon_code'=>session('cart_details')['coupon_code'],
-                'discount'=>session('cart_details')['discount'],
-                'discount_amount'=>$discount,
-                'tax'=>$tax,
-                'total_amount'=>$total_amount
+        if (isset(session('cart_details')['coupon_code'])) {
+            $cart_total = $total;
+            $discount = ($cart_total * (session('cart_details')['discount'] / 100));
+            $tax = (($cart_total - $discount) * 0.15);
+            $total_amount = (($cart_total + $tax) - $discount);
+            $coupondata = array(
+                'cart_total' => $cart_total,
+                'coupon_code' => session('cart_details')['coupon_code'],
+                'discount' => session('cart_details')['discount'],
+                'discount_amount' => $discount,
+                'tax' => $tax,
+                'total_amount' => $total_amount
             );
             session()->put('cart_details', $coupondata);
-        }else{
-            $cart_data=array('cart_total'=>$total,'tax'=>($total*0.15),'total_amount'=>($total + ($total*0.15)));
+        } else {
+            $cart_data = array('cart_total' => $total, 'tax' => ($total * 0.15), 'total_amount' => ($total + ($total * 0.15)));
             session()->put('cart_details', $cart_data);
         }
-
-
     }
 
     // public function coupon_check(Request $request){

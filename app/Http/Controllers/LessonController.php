@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -40,15 +40,15 @@ class LessonController extends Controller
             $lesson->notes = $request->lessonNotes;
 
             if ($lesson->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('lesson.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             // dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }
@@ -84,15 +84,15 @@ class LessonController extends Controller
             $lesson->notes = $request->lessonNotes;
 
             if ($lesson->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('lesson.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             // dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }

@@ -36,10 +36,10 @@ class PermissionController extends Controller
     {
         //
     }
- 
+
     public function save(SaveRequest $request, $role)
-    { 
-        try { 
+    {
+        try {
             // delete permission before saved
             Permission::where('role_id', encryptor('decrypt', $role))->delete();
             foreach ($request->permission as $permission) {
@@ -48,10 +48,10 @@ class PermissionController extends Controller
                 $data->name = $permission;
                 $data->save();
             }
-            $this->notice::success('Permission saved');
+            $this->notice::success('Lưu quyền cho vai trò thành công!');
             return redirect()->route('role.index');
         } catch (Exception $e) {
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             dd($e);
             return redirect()->back()->withInput();
         }

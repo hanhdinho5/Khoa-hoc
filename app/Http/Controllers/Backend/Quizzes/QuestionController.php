@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Quizzes; 
+namespace App\Http\Controllers\Backend\Quizzes;
 
 use App\Models\Question;
 use App\Http\Controllers\Controller;
@@ -45,15 +45,15 @@ class QuestionController extends Controller
             $question->correct_answer = $request->correctAnswer;
 
             if ($question->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('question.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }
@@ -72,7 +72,7 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $quiz = Quiz::get();
-        $question = Question::findOrFail(encryptor('decrypt',$id));
+        $question = Question::findOrFail(encryptor('decrypt', $id));
         return view('backend.quiz.question.edit', compact('quiz', 'question'));
     }
 
@@ -93,15 +93,15 @@ class QuestionController extends Controller
             $question->correct_answer = $request->correctAnswer;
 
             if ($question->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('question.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }

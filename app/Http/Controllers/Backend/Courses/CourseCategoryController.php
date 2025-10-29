@@ -46,12 +46,12 @@ class CourseCategoryController extends Controller
                 $data->category_image = $imageName;
             }
             if ($data->save())
-                return redirect()->route('courseCategory.index')->with('success', 'Data Saved');
+                return redirect()->route('courseCategory.index')->with('success', 'Lưu dữ liệu thành công!');
             else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -88,12 +88,12 @@ class CourseCategoryController extends Controller
                 $data->category_image = $imageName;
             }
             if ($data->save())
-                return redirect()->route('courseCategory.index')->with('success', 'Data Saved');
+                return redirect()->route('courseCategory.index')->with('success', 'Lưu dữ liệu thành công!');
             else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 

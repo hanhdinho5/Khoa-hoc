@@ -48,10 +48,8 @@ class CourseController extends Controller
     {
         try {
             $course = new Course;
-            $course->title_en = $request->courseTitle_en;
-            $course->title_bn = $request->courseTitle_bn;
+            $course->title = $request->courseTitle_en;
             $course->description_en = $request->courseDescription_en;
-            $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
             $course->type = $request->courseType;
@@ -64,10 +62,9 @@ class CourseController extends Controller
             $course->difficulty = $request->courseDifficulty;
             $course->course_code = $request->course_code;
             $course->prerequisites_en = $request->prerequisites_en;
-            $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
             $course->tag = $request->tag;
-            $course->language = 'en';
+            $course->language = 'vi';
 
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' . $request->image->extension();
@@ -80,12 +77,12 @@ class CourseController extends Controller
                 $course->thumbnail_image = $thumbnailImageName;
             }
             if ($course->save())
-                return redirect()->route('course.index')->with('success', 'Data Saved');
+                return redirect()->route('course.index')->with('success', 'Lưu dữ liệu thành công!');
             else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -123,10 +120,8 @@ class CourseController extends Controller
     {
         try {
             $course = Course::findOrFail(encryptor('decrypt', $id));
-            $course->title_en = $request->courseTitle_en;
-            $course->title_bn = $request->courseTitle_bn;
+            $course->title = $request->courseTitle_en;
             $course->description_en = $request->courseDescription_en;
-            $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
             $course->type = $request->courseType;
@@ -139,10 +134,9 @@ class CourseController extends Controller
             $course->difficulty = $request->courseDifficulty;
             $course->course_code = $request->course_code;
             $course->prerequisites_en = $request->prerequisites_en;
-            $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
             $course->tag = $request->tag;
-            $course->language = 'en';
+            $course->language = 'vi';
 
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' . $request->image->extension();
@@ -155,12 +149,12 @@ class CourseController extends Controller
                 $course->thumbnail_image = $thumbnailImageName;
             }
             if ($course->save())
-                return redirect()->route('course.index')->with('success', 'Data Saved');
+                return redirect()->route('course.index')->with('success', 'Lưu dữ liệu thành công!');
             else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -168,10 +162,8 @@ class CourseController extends Controller
     {
         try {
             $course = Course::findOrFail(encryptor('decrypt', $id));
-            $course->title_en = $request->courseTitle_en;
-            $course->title_bn = $request->courseTitle_bn;
+            $course->title = $request->courseTitle_en;
             $course->description_en = $request->courseDescription_en;
-            $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
             $course->type = $request->courseType;
@@ -184,11 +176,10 @@ class CourseController extends Controller
             $course->difficulty = $request->courseDifficulty;
             $course->course_code = $request->course_code;
             $course->prerequisites_en = $request->prerequisites_en;
-            $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
             $course->tag = $request->tag;
             $course->status = $request->status;
-            $course->language = 'en';
+            $course->language = 'vi';
 
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' . $request->image->extension();
@@ -201,12 +192,12 @@ class CourseController extends Controller
                 $course->thumbnail_image = $thumbnailImageName;
             }
             if ($course->save())
-                return redirect()->route('courseList')->with('success', 'Data Saved');
+                return redirect()->route('courseList')->with('success', 'Lưu dữ liệu thành công!');
             else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 

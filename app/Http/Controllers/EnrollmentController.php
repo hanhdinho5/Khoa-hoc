@@ -13,10 +13,20 @@ class EnrollmentController extends Controller
      */
     public function index()
     {
-        $enrollment = Enrollment::get();
+        $enrollment = Enrollment::with('student')->get();
+        // dd($enrollment);
         return view('backend.enrollment.index', compact('enrollment'));
     }
 
+    // Kích hoạt khoá học khi học viên thanh toán
+    public function activate($id)
+    {
+        $enrollment = Enrollment::findOrFail($id);
+        $enrollment->status = '1';
+        $enrollment->save();
+
+        return response()->json(['success' => true, 'message' => 'Kích hoạt thành công']);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -44,10 +54,7 @@ class EnrollmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Enrollment $enrollment)
-    {
-        //
-    }
+    public function edit(Enrollment $enrollment) {}
 
     /**
      * Update the specified resource in storage.

@@ -42,7 +42,7 @@ class ProfileController extends Controller
             }
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Something went wrong. Please try again');
+            return redirect()->back()->withInput()->with('error', 'Something went wrong. Vui lòng thử lại');
         }
     }
 
@@ -64,8 +64,8 @@ class ProfileController extends Controller
                 return redirect()->back()->with('success', 'Password Have been Changed');
             }
         } catch (Exception $e) {
-            // dd($e); 
-            return redirect()->back()->withInput()->with('error', 'Something went wrong. Please try again');
+            // dd($e);
+            return redirect()->back()->withInput()->with('error', 'Something went wrong. Vui lòng thử lại');
         }
     }
 
@@ -94,13 +94,13 @@ class ProfileController extends Controller
                 $user->image = $imageName;
                 $user->save();
 
-                return redirect()->back()->with('success', 'Image changed successfully.');
+                return redirect()->back()->with('success', 'Thay đổi ảnh thành công!');
             } else {
-                return redirect()->back()->with('error', 'Please select a valid image file.');
+                return redirect()->back()->with('error', 'Vui lòng chọn tệp hình ảnh hợp lệ.');
             }
         } catch (\Exception $e) {
             // dd($e);
-            return redirect()->back()->with('error', 'An error occurred. Please try again.');
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi. Vui lòng thử lại.');
         }
     }
 }

@@ -45,7 +45,7 @@ class CourseCategoryAndCourseSeeder extends Seeder
         // Giả sử instructor_id = 1 (bạn phải seed trước instructor)
         $courses = [
             [
-                'title_en' => 'IELTS Listening Beginner',
+                'title' => 'IELTS Listening Beginner',
                 'title_bn' => null,
                 'description_en' => 'Khóa học luyện kỹ năng nghe cho IELTS',
                 'description_bn' => null,
@@ -71,7 +71,7 @@ class CourseCategoryAndCourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'TOEIC Speaking Advanced',
+                'title' => 'TOEIC Speaking Advanced',
                 'title_bn' => null,
                 'description_en' => 'Khóa luyện kỹ năng nói TOEIC nâng cao',
                 'description_bn' => null,

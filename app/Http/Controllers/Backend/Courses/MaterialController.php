@@ -26,7 +26,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        $lesson= Lesson::get();
+        $lesson = Lesson::get();
         return view('backend.course.material.create', compact('lesson'));
     }
 
@@ -49,13 +49,13 @@ class MaterialController extends Controller
                 $material->content = $contentName;
             }
             if ($material->save()) {
-                return redirect()->route('material.index')->with('success', 'Data Saved');;
+                return redirect()->route('material.index')->with('success', 'Lưu dữ liệu thành công!');;
             } else {
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
             }
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -72,12 +72,12 @@ class MaterialController extends Controller
      */
     public function edit($id)
     {
-        $lesson= Lesson::get();
+        $lesson = Lesson::get();
         $material = Material::findOrFail(encryptor('decrypt', $id));
         return view('backend.course.material.edit', compact('lesson', 'material'));
     }
 
-    /** 
+    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, $id)
@@ -95,15 +95,15 @@ class MaterialController extends Controller
                 $material->content = $contentName;
             }
             if ($material->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('material.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }

@@ -40,15 +40,15 @@ class OptionController extends Controller
             $option->is_correct = $request->is_correct;
 
             if ($option->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('option.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }
@@ -83,15 +83,15 @@ class OptionController extends Controller
             $option->is_correct = $request->is_correct;
 
             if ($option->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('option.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }

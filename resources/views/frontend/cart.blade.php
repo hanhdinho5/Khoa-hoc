@@ -33,9 +33,9 @@
                                     </div>
                                     <div class="text">
                                         <h6><a
-                                                href="{{ route('courseDetails', encryptor('encrypt', $id)) }}">{{ $details['title_en'] }}</a>
+                                                href="{{ route('courseDetails', encryptor('encrypt', $id)) }}">{{ $details['title'] }}</a>
                                         </h6>
-                                        <p>By <a href="#">{{ $details['instructor'] }}</a></p>
+                                        <p>Giảng viên: <a href="#">{{ $details['instructor'] }}</a></p>
                                         <div class="bottom-wizard d-flex justify-content-between align-items-center">
                                             <p>
                                                 {{ $details['price'] ? $details['price'] . 'VNĐ' : 'Free' }}
@@ -73,7 +73,8 @@
                                 <p class="font-title--card">
                                     {{ number_format((float) session('cart_details')['total_amount'], 2) . 'VNĐ' }}</p>
                             </div>
-
+                            <a href="{{ route('checkout') }}"
+                                class="button button-lg button--primary-outline mt-3 w-100">Đăng ký ngay</a>
                         </div>
                     </div>
                 </div>

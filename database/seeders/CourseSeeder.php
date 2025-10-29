@@ -15,7 +15,7 @@ class CourseSeeder extends Seeder
     {
         DB::table('courses')->insert([
             [
-                'title_en' => 'Laravel cơ bản',
+                'title' => 'Laravel cơ bản',
                 'title_bn' => null,
                 'description_en' => 'Khóa học nhập môn Laravel cho người mới bắt đầu.',
                 'description_bn' => null,
@@ -41,7 +41,7 @@ class CourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'JavaScript nâng cao',
+                'title' => 'JavaScript nâng cao',
                 'title_bn' => null,
                 'description_en' => 'Nắm vững ES6+ và các framework JS hiện đại.',
                 'description_bn' => null,
@@ -67,7 +67,7 @@ class CourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'Python cho Khoa học dữ liệu',
+                'title' => 'Python cho Khoa học dữ liệu',
                 'title_bn' => null,
                 'description_en' => 'Phân tích và trực quan hóa dữ liệu với Python.',
                 'description_bn' => null,
@@ -93,7 +93,7 @@ class CourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'ReactJS cơ bản',
+                'title' => 'ReactJS cơ bản',
                 'title_bn' => null,
                 'description_en' => 'Khóa học nhanh giúp bạn làm quen với ReactJS.',
                 'description_bn' => null,
@@ -119,7 +119,7 @@ class CourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'Django cho Web',
+                'title' => 'Django cho Web',
                 'title_bn' => null,
                 'description_en' => 'Xây dựng website mạnh mẽ với Django.',
                 'description_bn' => null,
@@ -145,7 +145,7 @@ class CourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'Nhập môn Machine Learning',
+                'title' => 'Nhập môn Machine Learning',
                 'title_bn' => null,
                 'description_en' => 'Bắt đầu với các thuật toán và mô hình học máy.',
                 'description_bn' => null,
@@ -171,7 +171,7 @@ class CourseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'title_en' => 'HTML & CSS cơ bản',
+                'title' => 'HTML & CSS cơ bản',
                 'title_bn' => null,
                 'description_en' => 'Học thiết kế web với HTML và CSS từ đầu.',
                 'description_bn' => null,

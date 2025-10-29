@@ -10,7 +10,7 @@ use Exception;
 
 class QuizController extends Controller
 {
-    /**  
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -39,15 +39,15 @@ class QuizController extends Controller
             $quiz->course_id = $request->courseId;
 
             if ($quiz->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('quiz.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }
@@ -81,15 +81,15 @@ class QuizController extends Controller
             $quiz->course_id = $request->courseId;
 
             if ($quiz->save()) {
-                $this->notice::success('Data Saved');
+                $this->notice::success('Lưu dữ liệu thành công!');
                 return redirect()->route('quiz.index');
             } else {
-                $this->notice::error('Please try again');
+                $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            $this->notice::error('Please try again');
+            $this->notice::error('Vui lòng thử lại');
             return redirect()->back()->withInput();
         }
     }

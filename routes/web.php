@@ -32,7 +32,7 @@ use App\Http\Controllers\EventController as event;
 use App\Http\Controllers\Students\AuthController as sauth;
 use App\Http\Controllers\Students\DashboardController as studashboard;
 use App\Http\Controllers\Students\ProfileController as stu_profile;
-use App\Http\Controllers\Students\sslController as sslcz;
+use App\Http\Controllers\Students\payController as sslcz;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +77,10 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
     Route::resource('message', message::class);
     Route::resource('coupon', coupon::class);
     Route::resource('enrollment', enrollment::class);
+    // Route::post('/admin/activate-course/{id}', [enrollment::class, 'activate'])->name('admin.activate-course'); // duyệt khi học viên thanh toán
+    Route::post('/activate-course/{id}', [enrollment::class, 'activate'])
+        ->name('enrollment.activate');
+
     Route::get('permission/{role}', [permission::class, 'index'])->name('permission.list');
     Route::post('permission/{role}', [permission::class, 'save'])->name('permission.save');
 });
@@ -120,6 +124,10 @@ Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remo
 // Coupon
 Route::post('coupon_check', [CartController::class, 'coupon_check'])->name('coupon_check');
 
+// Thông báo đăng ký thành công
+Route::get('/register-success', function () {
+    return view('frontend.register-success');
+})->name('register.success');
 /* ssl payment */
 Route::post('/payment/ssl/notify', [sslcz::class, 'notify'])->name('payment.ssl.notify');
 Route::post('/payment/ssl/cancel', [sslcz::class, 'cancel'])->name('payment.ssl.cancel');

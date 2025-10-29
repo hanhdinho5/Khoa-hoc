@@ -13,7 +13,7 @@ class CouponController extends Controller
      */
     public function index()
     {
-        $coupon= Coupon::get();
+        $coupon = Coupon::get();
         return view('backend.coupon.index', compact('coupon'));
     }
 
@@ -36,14 +36,14 @@ class CouponController extends Controller
             $coupon->discount = $request->discount;
             $coupon->valid_from = $request->valid_from;
             $coupon->valid_until = $request->valid_until;
-           
-            if($coupon->save())
-                return redirect()->route('coupon.index')->with('success','Data Saved');
-                else 
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+
+            if ($coupon->save())
+                return redirect()->route('coupon.index')->with('success', 'Lưu dữ liệu thành công!');
+            else
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (\Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -77,12 +77,12 @@ class CouponController extends Controller
             $coupon->valid_until = $request->valid_until;
 
             if ($coupon->save())
-                return redirect()->route('coupon.index')->with('success', 'Data Saved');
+                return redirect()->route('coupon.index')->with('success', 'Lưu dữ liệu thành công!');
             else
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (\Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -93,7 +93,7 @@ class CouponController extends Controller
     {
         $coupon = Coupon::findOrFail($id);
 
-        if($coupon->delete())
-        return redirect()->back()->with('error','Data Deleted');
+        if ($coupon->delete())
+            return redirect()->back()->with('error', 'Data Deleted');
     }
 }

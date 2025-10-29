@@ -56,12 +56,12 @@ class UserController extends Controller
                 $data->image = $imageName;
             }
             if ($data->save())
-                return redirect()->route('user.index')->with('success', 'Data SAVED');
+                return redirect()->route('user.index')->with('success', 'Đã lưu thông tin');
             else
-                return redirect()->back()->withInput()->with('error', 'Please Try again');
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 
@@ -91,12 +91,10 @@ class UserController extends Controller
         try {
             $data = User::findOrFail(encryptor('decrypt', $id));
             $data->name_en = $request->userName_en;
-            $data->name_bn = $request->userName_bn;
             $data->email = $request->emailAddress;
             $data->contact_en = $request->contactNumber_en;
-            $data->contact_bn = $request->contactNumber_bn;
             $data->role_id = $request->roleId;
-            $data->language = 'en';
+            $data->language = 'vi';
             $data->full_access = $request->fullAccess;
             $data->status = $request->status;
 
@@ -108,13 +106,20 @@ class UserController extends Controller
                 $request->image->move(public_path('uploads/users'), $imageName);
                 $data->image = $imageName;
             }
-            if ($data->save())
-                return redirect()->route('user.index')->with('success', 'Data SAVED');
-            else
-                return redirect()->back()->withInput()->with('error', 'Please Try again');
+            if ($data->save()) {
+                // Nếu user đang đăng nhập chính là user vừa được cập nhật
+                $currentUserId = session('userId') ?? '';
+                if ($currentUserId && $currentUserId == $id) {
+                    // Cập nhật lại session ảnh
+                    session()->put('image', $data->image);
+                }
+
+                return redirect()->route('user.index')->with('success', 'Đã lưu thông tin');
+            } else
+                return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }
 

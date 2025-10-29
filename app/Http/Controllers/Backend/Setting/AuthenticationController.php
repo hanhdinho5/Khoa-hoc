@@ -34,7 +34,7 @@ class AuthenticationController extends Controller
                 return redirect('login')->with('danger', 'Vui lòng thử lại');
         } catch (Exception $e) {
             dd($e);
-            return redirect('login')->with('danger', 'Please Try Again');
+            return redirect('login')->with('danger', 'Vui lòng thử lại');
         }
     }
 
@@ -50,6 +50,9 @@ class AuthenticationController extends Controller
             if ($user) {
                 if ($user->status == 1) {
                     if (Hash::check($request->password, $user->password)) {
+                        // Xoá toàn bộ session cũ, nếu đang đăng nhập với giảng viên
+                        session()->flush();
+                        // Lưu thông tin vào session
                         $this->setSession($user);
                         return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
                     } else
@@ -76,8 +79,8 @@ class AuthenticationController extends Controller
                 'role' => encryptor('encrypt', $user->role->name),
                 'roleIdentitiy' => encryptor('encrypt', $user->role->identity),
                 'language' => encryptor('encrypt', $user->language),
-                'image' => $user->image ?? 'No Image Found',
-                'instructorImage' => $user?->instructor->image ?? 'No instructorImage Found',
+                'image' => $user->image ?? null,
+                'instructorImage' => $user?->instructor->image ?? 'Không thấy người hướng dẫn',
             ]
         );
     }
@@ -85,7 +88,7 @@ class AuthenticationController extends Controller
     public function signOut()
     {
         request()->session()->flush();
-        return redirect('login')->with('danger', 'Succesfully Logged Out');
+        return redirect('login')->with('danger', 'Đã đăng xuất');
     }
 
     public function show(User $data)
