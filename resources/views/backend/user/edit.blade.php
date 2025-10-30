@@ -3,13 +3,13 @@
 
 @push('styles')
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/images/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- Pick date -->
-    <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.date.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.date.css') }}">
 @endpush
 
 @section('content')
@@ -85,9 +85,11 @@
                                             <label class="form-label">Vai trò</label>
                                             <select class="form-control" name="roleId">
                                                 @forelse ($role as $r)
-                                                    <option value="{{ $r->id }}"
-                                                        {{ old('roleId', $user->role_id) == $r->id ? 'selected' : '' }}>
-                                                        {{ $r->name }}</option>
+                                                    @if ($r->identity != 'instructor' && $r->identity != 'student')
+                                                        <option value="{{ $r->id }}"
+                                                            {{ old('roleId', $user->role_id) == $r->id ? 'selected' : '' }}>
+                                                            {{ $r->name }}</option>
+                                                    @endif
                                                 @empty
                                                     <option value="">Không tìm thấy vai trò</option>
                                                 @endforelse
@@ -120,14 +122,14 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <label class="form-label">Hình ảnh</label>
+                                        <label class="form-label">Hình ảnh (Để trống nếu không thay đổi)</label>
                                         <div class="form-group fallback w-100">
                                             <input type="file" class="dropify" data-default-file="" name="image">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label">Mật khẩu</label>
+                                            <label class="form-label">Mật khẩu (Để trống nếu không thay đổi)</label>
                                             <input type="password" class="form-control" name="password">
                                         </div>
                                         @if ($errors->has('password'))
@@ -135,8 +137,9 @@
                                         @endif
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <button type="submit" class="btn btn-primary">Lưu</button>
-                                        <button type="submit" class="btn btn-light">Hủy bỏ</button>
+                                        <button type="submit" class="btn btn-primary m">Cập nhật</button>
+                                        <button type="button" class="btn btn-light"><a
+                                                href="{{ route('user.index') }}">Quay lại</a></button>
                                     </div>
                                 </div>
                             </form>
@@ -152,10 +155,10 @@
 
 @push('scripts')
     <!-- pickdate -->
-    <script src="{{ asset('public/vendor/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.time.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.date.js') }}"></script>
 
     <!-- Pickdate -->
-    <script src="{{ asset('public/js/plugins-init/pickadate-init.js') }}"></script>
+    <script src="{{ asset('js/plugins-init/pickadate-init.js') }}"></script>
 @endpush

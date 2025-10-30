@@ -234,12 +234,13 @@
                                 </li>
                                 <li><a href="{{ route('courseList') }}"><i class="las la-school"></i>Danh sách</a>
                                 </li>
-                                <li><a href="{{ route('course.index') }}"><i class="las la-book-open"></i>Tất cả
-                                        khóa</a></li>
+
                                 <li><a href="{{ route('lesson.index') }}"><i class="las la-chalkboard"></i>Bài
                                         học</a></li>
                                 <li><a href="{{ route('material.index') }}"><i class="las la-atom"></i></i>Tài
                                         liệu</a></li>
+                                <li><a href="{{ route('quiz.index') }}"><i class="las la-book-open"></i>Bài kiểm
+                                        tra</a></li>
                             </ul>
                         </li>
                         <li><a class="" href="{{ route('enrollment.index') }}" aria-expanded="false">

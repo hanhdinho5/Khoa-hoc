@@ -3,8 +3,8 @@
 
 @push('styles')
     <!-- Pick date -->
-    <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.date.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.date.css') }}">
 @endpush
 
 @section('content')
@@ -48,13 +48,7 @@
                                             <span class="text-danger"> {{ $errors->first('userName_en') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <label class="form-label">নাম (বাংলায়)</label>
-                                            <input type="text" class="form-control" name="userName_bn"
-                                                value="{{ old('userName_bn') }}">
-                                        </div>
-                                    </div>
+
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label">Số điện thoại</label>
@@ -65,16 +59,7 @@
                                             <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <label class="form-label">ফোন নাম্বার (বাংলায়)</label>
-                                            <input type="tel" class="form-control" name="contactNumber_bn"
-                                                value="{{ old('contactNumber_bn') }}">
-                                        </div>
-                                        @if ($errors->has('contactNumber_bn'))
-                                            <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
-                                        @endif
-                                    </div>
+
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label">Email</label>
@@ -90,9 +75,11 @@
                                             <label class="form-label">Vai trò</label>
                                             <select class="form-control" name="roleId">
                                                 @forelse ($role as $r)
-                                                    <option value="{{ $r->id }}"
-                                                        {{ old('roleId') == $r->id ? 'selected' : '' }}>
-                                                        {{ $r->name }}</option>
+                                                    @if ($r->identity != 'instructor' && $r->identity != 'student')
+                                                        <option value="{{ $r->id }}"
+                                                            {{ old('roleId') == $r->id ? 'selected' : '' }}>
+                                                            {{ $r->name }}</option>
+                                                    @endif
                                                 @empty
                                                     <option value="">Không tìm thấy vai trò</option>
                                                 @endforelse
@@ -115,12 +102,12 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label">Trạng thái hoạt động</label>
+                                            <label class="form-label">Trạng thái</label>
                                             <select class="form-control" name="status">
                                                 <option value="1" @if (old('status') == 1) selected @endif>
-                                                    Tích cực</option>
+                                                    Hoạt động</option>
                                                 <option value="0" @if (old('status') == 0) selected @endif>
-                                                    Không hoạt động</option>
+                                                    Tạm khoá</option>
                                             </select>
                                         </div>
                                     </div>
@@ -140,8 +127,9 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <button type="submit" class="btn btn-primary">Lưu</button>
-                                        <button type="submit" class="btn btn-light">Hủy bỏ</button>
+                                        <button type="submit" class="btn btn-primary mr-3">Thêm</button>
+                                        <button type="button" class="btn btn-light"><a
+                                                href="{{ route('user.index') }}">Quay lại</a></button>
                                     </div>
                                 </div>
                             </form>
@@ -157,10 +145,10 @@
 
 @push('scripts')
     <!-- pickdate -->
-    <script src="{{ asset('public/vendor/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.time.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.date.js') }}"></script>
 
     <!-- Pickdate -->
-    <script src="{{ asset('public/js/plugins-init/pickadate-init.js') }}"></script>
+    <script src="{{ asset('js/plugins-init/pickadate-init.js') }}"></script>
 @endpush

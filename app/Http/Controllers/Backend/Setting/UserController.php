@@ -40,12 +40,10 @@ class UserController extends Controller
         try {
             $data = new User();
             $data->name_en = $request->userName_en;
-            $data->name_bn = $request->userName_bn;
             $data->email = $request->emailAddress;
             $data->contact_en = $request->contactNumber_en;
-            $data->contact_bn = $request->contactNumber_bn;
             $data->role_id = $request->roleId;
-            $data->language = 'en';
+            $data->language = 'vi';
             $data->full_access = $request->fullAccess;
             $data->status = $request->status;
             $data->password = Hash::make($request->password);
@@ -60,7 +58,7 @@ class UserController extends Controller
             else
                 return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         } catch (Exception $e) {
-            // dd($e);
+            dd($e);
             return redirect()->back()->withInput()->with('error', 'Vui lòng thử lại');
         }
     }

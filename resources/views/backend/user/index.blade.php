@@ -73,7 +73,7 @@
                                                             <span
                                                                 class="badge {{ $d->full_access == 1
                                                                     ? "
-                                                                                                                                                                                                                                                        badge-info"
+                                                                                                                                                                                                                                                                                                                                                                                        badge-info"
                                                                     : 'badge-warning' }}">
                                                                 @if ($d->full_access == 1)
                                                                     {{ __('Yes') }}
@@ -85,7 +85,7 @@
                                                             <span
                                                                 class="badge {{ $d->status == 1
                                                                     ? "
-                                                                                                                                                                                                                                                        badge-success"
+                                                                                                                                                                                                                                                                                                                                                                                        badge-success"
                                                                     : 'badge-danger' }}">
                                                                 @if ($d->status == 1)
                                                                     {{ __('Active') }}
@@ -163,11 +163,11 @@
                                                             <span
                                                                 class="badge {{ $d->status == 1
                                                                     ? "
-                                                                                                                                                                                                                                                        badge-success"
+                                                                                                                                                                                                                                                                                                                                                                                        badge-success"
                                                                     : 'badge-danger' }}">
                                                                 @if ($d->status == 1)
-                                                                    {{ __('Active') }}
-                                                                    @else{{ __('Inactive') }}
+                                                                    {{ __('Hành động') }}
+                                                                    @else{{ __('Tạm khoá') }}
                                                                 @endif
                                                             </span>
                                                         </li>
@@ -176,7 +176,7 @@
                                                             <span
                                                                 class="badge {{ $d->full_access == 1
                                                                     ? "
-                                                                                                                                                                                                                                                        badge-info"
+                                                                                                                                                                                                                                                                                                                                                                                        badge-info"
                                                                     : 'badge-warning' }}">
                                                                 @if ($d->full_access == 1)
                                                                     {{ __('Yes') }}

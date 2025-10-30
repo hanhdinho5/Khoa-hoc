@@ -12,7 +12,7 @@ use App\Http\Controllers\Backend\Courses\CourseCategoryController as courseCateg
 use App\Http\Controllers\Backend\Courses\CourseController as course;
 use App\Http\Controllers\Backend\Courses\MaterialController as material;
 use App\Http\Controllers\Backend\Quizzes\QuizController as quiz;
-use App\Http\Controllers\Backend\Quizzes\QuestionController as question;
+use App\Http\Controllers\Backend\Quizzes\QuestionController;
 use App\Http\Controllers\Backend\Quizzes\OptionController as option;
 use App\Http\Controllers\Backend\Quizzes\AnswerController as answer;
 use App\Http\Controllers\Backend\Reviews\ReviewController as review;
@@ -69,7 +69,9 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
     Route::resource('lesson', lesson::class);
     Route::resource('event', event::class);
     Route::resource('quiz', quiz::class);
-    Route::resource('question', question::class);
+    // Route::resource('question', question::class);
+    Route::resource('quiz.question', QuestionController::class);
+
     Route::resource('option', option::class);
     Route::resource('answer', answer::class);
     Route::resource('review', review::class);

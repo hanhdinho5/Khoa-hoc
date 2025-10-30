@@ -3,8 +3,8 @@
 
 @push('styles')
     <!-- Pick date -->
-    <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/vendor/pickadate/themes/default.date.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.date.css') }}">
 @endpush
 
 @section('content')
@@ -109,8 +109,8 @@
                                         <div class="form-group">
                                             <label class="form-label">Ngày tháng năm sinh</label>
                                             <input type="date" name="birthDate"
-                                                value="{{ old('birthDate', $student->date_of_birth) }}" class="form-control"
-                                                id="">
+                                                value="{{ old('birthDate', $student->date_of_birth) }}"
+                                                class="form-control" id="">
                                         </div>
                                         @if ($errors->has('birthDate'))
                                             <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
@@ -174,10 +174,10 @@
 
 @push('scripts')
     <!-- pickdate -->
-    <script src="{{ asset('public/vendor/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.time.js') }}"></script>
-    <script src="{{ asset('public/vendor/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('vendor/pickadate/picker.date.js') }}"></script>
 
     <!-- Pickdate -->
-    <script src="{{ asset('public/js/plugins-init/pickadate-init.js') }}"></script>
+    <script src="{{ asset('js/plugins-init/pickadate-init.js') }}"></script>
 @endpush

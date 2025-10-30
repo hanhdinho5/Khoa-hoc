@@ -52,7 +52,7 @@ class InstructorController extends Controller
             $instructor->title = $request->title;
             $instructor->status = $request->status;
             $instructor->password = Hash::make($request->password);
-            $instructor->language = 'en';
+            $instructor->language = 'vi';
             $instructor->access_block = $request->access_block;
             if ($request->hasFile('image')) {
                 $imageName = (Role::find($request->roleId)->name) . '_' .  $request->fullName_en . '_' . rand(999, 111) .  '.' . $request->image->extension();
@@ -74,7 +74,7 @@ class InstructorController extends Controller
                 }
                 if ($user->save()) {
                     DB::commit();
-                    $this->notice::success('Successfully saved');
+                    $this->notice::success('Lưu thành công!');
                     return redirect()->route('instructor.index');
                 }
             } else
@@ -127,13 +127,17 @@ class InstructorController extends Controller
             $instructor->designation = $request->designation;
             $instructor->title = $request->title;
             $instructor->status = $request->status;
-            $instructor->password = Hash::make($request->password);
-            $instructor->language = 'en';
+            $instructor->language = 'vi';
             $instructor->access_block = $request->access_block;
+            // Cập nhật nếu upload ảnh mới
             if ($request->hasFile('image')) {
                 $imageName = (Role::find($request->roleId)->name) . '_' .  $request->fullName_en . '_' . rand(999, 111) .  '.' . $request->image->extension();
                 $request->image->move(public_path('uploads/users'), $imageName);
                 $instructor->image = $imageName;
+            }
+            //Chỉ cập nhật mật khẩu nếu có nhập mới
+            if (!empty($request->password)) {
+                $instructor->password = Hash::make($request->password);
             }
 
             if ($instructor->save()) {
@@ -150,7 +154,7 @@ class InstructorController extends Controller
                 }
                 if ($user->save()) {
                     DB::commit();
-                    $this->notice::success('Successfully saved');
+                    $this->notice::success('Lưu thành công!');
                     return redirect()->route('instructor.index');
                 }
             }

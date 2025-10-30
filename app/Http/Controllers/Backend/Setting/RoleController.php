@@ -37,7 +37,7 @@ class RoleController extends Controller
             $data->name = $request->Name;
             $data->identity = $request->Identity;
             if ($data->save()) {
-                $this->notice::success('Successfully saved');
+                $this->notice::success('Lưu thành công!');
                 return redirect()->route('role.index');
             }
         } catch (Exception $e) {

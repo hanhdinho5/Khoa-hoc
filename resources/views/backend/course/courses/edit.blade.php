@@ -121,7 +121,7 @@
                                                         @if (old('courseType', $course->type) == 'free') selected @endif>Miễn phí
                                                     </option>
                                                     <option value="paid"
-                                                        @if (old('courseType', $course->type) == 'paid') selected @endif>Trả
+                                                        @if (old('courseType', $course->type) == 'paid') selected @endif>Trả phí
                                                     </option>
                                                     <option value="subscription"
                                                         @if (old('courseType', $course->type) == 'subscription') selected @endif>Dựa trên đăng kí

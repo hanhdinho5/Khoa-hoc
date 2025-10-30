@@ -27,7 +27,20 @@ class AddNewRequest extends FormRequest
             'contactNumber_en' => 'required|unique:instructors,contact_en',
             'roleId' => 'required|max:3',
             'password' => 'required',
+        ];
+    }
 
+    /**
+     * Get custom attributes for validator errors.
+     */
+    public function attributes(): array
+    {
+        return [
+            'fullName_en' => 'họ và tên',
+            'emailAddress' => 'địa chỉ email',
+            'contactNumber_en' => 'số điện thoại',
+            'roleId' => 'vai trò',
+            'password' => 'mật khẩu',
         ];
     }
 }

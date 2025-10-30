@@ -2,51 +2,58 @@
 
 namespace App\Http\Controllers\Backend\Quizzes;
 
-use App\Models\Question;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Question;
+use Illuminate\Http\Request;
 use Exception;
 
 class QuestionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Hiển thị danh sách câu hỏi của một quiz cụ thể
      */
-    public function index()
+    public function index($quizId)
     {
-        $question = Question::paginate(10);
-        return view('backend.quiz.question.index', compact('question'));
+        // dd(1);
+        $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
+        $question = Question::where('quiz_id', $quiz->id)->paginate(10);
+
+        return view('backend.quiz.question.index', compact('quiz', 'question'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Hiển thị form tạo mới câu hỏi cho quiz
      */
-    public function create()
+    public function create($quizId)
     {
-        $quiz = Quiz::get();
+        $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
         return view('backend.quiz.question.create', compact('quiz'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Lưu câu hỏi mới
      */
-    public function store(Request $request)
+    public function store(Request $request, $quizId)
     {
         try {
-            $question = new Question;
-            $question->quiz_id = $request->quizId;
+            $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
+            // dd(encryptor('encrypt', $quiz->id));
+            $question = new Question();
+            $question->quiz_id = $quiz->id;
             $question->type = $request->questionType;
             $question->content = $request->questionContent;
             $question->option_a = $request->optionA;
             $question->option_b = $request->optionB;
             $question->option_c = $request->optionC;
             $question->option_d = $request->optionD;
+            $question->exexplain = $request->exexplain;
+
             $question->correct_answer = $request->correctAnswer;
 
             if ($question->save()) {
                 $this->notice::success('Lưu dữ liệu thành công!');
-                return redirect()->route('question.index');
+                return redirect()->route('quiz.question.index', $quizId);
             } else {
                 $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
@@ -59,42 +66,52 @@ class QuestionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Hiển thị chi tiết một câu hỏi cụ thể
      */
-    public function show(Question $question)
+    public function show($quizId, $id)
     {
-        //
+        $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
+
+        $question = Question::findOrFail(encryptor('decrypt', $id));
+
+        return view('backend.quiz.question.show', compact('quiz', 'question'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Hiển thị form chỉnh sửa câu hỏi
      */
-    public function edit($id)
+    public function edit($quizId, $id)
     {
-        $quiz = Quiz::get();
+        $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
+
         $question = Question::findOrFail(encryptor('decrypt', $id));
+
         return view('backend.quiz.question.edit', compact('quiz', 'question'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Cập nhật câu hỏi
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $quizId, $id)
     {
         try {
+            $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
+
             $question = Question::findOrFail(encryptor('decrypt', $id));
-            $question->quiz_id = $request->quizId;
+
+            $question->quiz_id = $quiz->id;
             $question->type = $request->questionType;
             $question->content = $request->questionContent;
             $question->option_a = $request->optionA;
             $question->option_b = $request->optionB;
             $question->option_c = $request->optionC;
             $question->option_d = $request->optionD;
+            $question->exexplain = $request->exexplain;
             $question->correct_answer = $request->correctAnswer;
 
             if ($question->save()) {
-                $this->notice::success('Lưu dữ liệu thành công!');
-                return redirect()->route('question.index');
+                $this->notice::success('Cập nhật thành công!');
+                return redirect()->route('quiz.question.index', $quizId);
             } else {
                 $this->notice::error('Vui lòng thử lại');
                 return redirect()->back()->withInput();
@@ -107,14 +124,20 @@ class QuestionController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Xoá câu hỏi
      */
-    public function destroy($id)
+    public function destroy($quizId, $id)
     {
+        $quiz = Quiz::findOrFail(encryptor('decrypt', $quizId));
+
         $data = Question::findOrFail(encryptor('decrypt', $id));
+
         if ($data->delete()) {
-            $this->notice::error('Data Deleted!');
-            return redirect()->back();
+            $this->notice::error('Xoá dữ liệu thành công!');
+        } else {
+            $this->notice::error('Vui lòng thử lại');
         }
+
+        return redirect()->route('quiz.question.index', $quizId);
     }
 }
