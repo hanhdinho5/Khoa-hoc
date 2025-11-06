@@ -73,7 +73,7 @@
                                                             <span
                                                                 class="badge {{ $d->full_access == 1
                                                                     ? "
-                                                                                                                                                                                                                                                                                                                                                                                        badge-info"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        badge-info"
                                                                     : 'badge-warning' }}">
                                                                 @if ($d->full_access == 1)
                                                                     {{ __('Yes') }}
@@ -85,11 +85,11 @@
                                                             <span
                                                                 class="badge {{ $d->status == 1
                                                                     ? "
-                                                                                                                                                                                                                                                                                                                                                                                        badge-success"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        badge-success"
                                                                     : 'badge-danger' }}">
                                                                 @if ($d->status == 1)
-                                                                    {{ __('Active') }}
-                                                                    @else{{ __('Inactive') }}
+                                                                    {{ __('Hoạt động') }}
+                                                                    @else{{ __('Tạm khoá') }}
                                                                 @endif
                                                             </span>
                                                         </td>
@@ -121,89 +121,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="grid-view" class="tab-pane fade col-lg-12">
-                            <div class="row">
-                                @forelse ($data as $d)
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                                        <div class="card card-profile">
-                                            <div class="card-header justify-content-end pb-0">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-link" type="button" data-toggle="dropdown">
-                                                        <span class="dropdown-dots fs--1"></span>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right border py-0">
-                                                        <div class="py-2">
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('user.edit', encryptor('encrypt', $d->id)) }}">Edit</a>
-                                                            <a class="dropdown-item text-danger"
-                                                                href="javascript:void(0);">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body pt-2">
-                                                <div class="text-center">
-                                                    <div class="profile-photo">
-                                                        <img src="{{ asset('uploads/users/' . $d->image) }}" width="100"
-                                                            height="100" class="rounded-circle" alt="">
-                                                    </div>
-                                                    <h3 class="mt-4 mb-1">{{ $d->name_en }}</h3>
-                                                    <p class="text-muted">{{ $d->role?->name }}</p>
-                                                    <ul class="list-group mb-3 list-group-flush">
-                                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                                            <span>Số điện thoại :</span>
-                                                            <strong>{{ $d->contact_en }}</strong>
-                                                        </li>
-                                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                                            <span class="mb-0">Email :</span>
-                                                            <strong>{{ $d->email }}</strong>
-                                                        </li>
-                                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                                            <span class="mb-0">Trạng thái :</span>
-                                                            <span
-                                                                class="badge {{ $d->status == 1
-                                                                    ? "
-                                                                                                                                                                                                                                                                                                                                                                                        badge-success"
-                                                                    : 'badge-danger' }}">
-                                                                @if ($d->status == 1)
-                                                                    {{ __('Hành động') }}
-                                                                    @else{{ __('Tạm khoá') }}
-                                                                @endif
-                                                            </span>
-                                                        </li>
-                                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                                            <span class="mb-0">Truy cập đầy đủ :</span>
-                                                            <span
-                                                                class="badge {{ $d->full_access == 1
-                                                                    ? "
-                                                                                                                                                                                                                                                                                                                                                                                        badge-info"
-                                                                    : 'badge-warning' }}">
-                                                                @if ($d->full_access == 1)
-                                                                    {{ __('Yes') }}
-                                                                    @else{{ __('No') }}
-                                                                @endif
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                    <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                        href="about-student.html">Đọc thêm</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @empty
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                                        <div class="card card-profile">
-                                            <div class="card-body pt-2">
-                                                <div class="text-center">
-                                                    <p class="mt-3 px-4">Không tìm thấy người dùng</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforelse
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

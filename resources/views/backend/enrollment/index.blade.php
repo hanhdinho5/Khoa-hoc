@@ -4,6 +4,7 @@
 @push('styles')
     <!-- Datatable -->
     <link href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
 
 @section('content')
@@ -128,7 +129,6 @@
 @endsection
 @push('scripts')
     <!-- Datatable -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
 

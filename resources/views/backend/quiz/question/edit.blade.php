@@ -139,7 +139,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label">Giải thích đáp án đúng</label>
-                                            <textarea class="form-control" name="exexplain">{{ old('exexplain', $question->exexplain) }}</textarea>
+                                            <textarea class="form-control" name="explain">{{ old('explain', $question->explain) }}</textarea>
                                         </div>
                                     </div>
 

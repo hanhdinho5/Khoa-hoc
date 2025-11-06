@@ -33,6 +33,8 @@ use App\Http\Controllers\Students\AuthController as sauth;
 use App\Http\Controllers\Students\DashboardController as studashboard;
 use App\Http\Controllers\Students\ProfileController as stu_profile;
 use App\Http\Controllers\Students\payController as sslcz;
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -125,6 +127,11 @@ Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remo
 
 // Coupon
 Route::post('coupon_check', [CartController::class, 'coupon_check'])->name('coupon_check');
+
+// Học viên làm bài kiểm tra
+Route::get('taking-the-test/{id}', [TestController::class, 'test'])->name('test');
+Route::post('taking-the-test/{id}/submit', [TestController::class, 'submitTest'])->name('test.submit');
+Route::get('test-result/{id}', [TestController::class, 'result'])->name('test.result');
 
 // Thông báo đăng ký thành công
 Route::get('/register-success', function () {

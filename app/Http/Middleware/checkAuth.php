@@ -20,9 +20,11 @@ class checkAuth
         if (!Session::has('userId') || Session::has('userId') == null) {
             return redirect()->route('logOut');
         } else {
+
             $user = User::where('status', 1)->where('id', currentUserId())->first();
+
             if (!$user)
-                return redirect()->route('logOut'); 
+                return redirect()->route('logOut');
             else
                 return $next($request);
         }

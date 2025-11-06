@@ -47,7 +47,7 @@ class QuestionController extends Controller
             $question->option_b = $request->optionB;
             $question->option_c = $request->optionC;
             $question->option_d = $request->optionD;
-            $question->exexplain = $request->exexplain;
+            $question->explain = $request->explain;
 
             $question->correct_answer = $request->correctAnswer;
 
@@ -106,7 +106,7 @@ class QuestionController extends Controller
             $question->option_b = $request->optionB;
             $question->option_c = $request->optionC;
             $question->option_d = $request->optionD;
-            $question->exexplain = $request->exexplain;
+            $question->explain = $request->explain;
             $question->correct_answer = $request->correctAnswer;
 
             if ($question->save()) {

@@ -98,7 +98,7 @@
                                                 value="{{ old('title') }}">
                                         </div>
                                         @if ($errors->has('title'))
-                                            <span class="text-danger"> {{ $errors->first('title') }}</span>
+                                            <span class="text-danger">{{ $errors->first('title') }}</span>
                                         @endif
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">

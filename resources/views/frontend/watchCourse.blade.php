@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/src/scss/vendors/plugin/css/star-rating-svg.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/dist/main.css') }}" />
     <link rel="icon" type="image/png" href="{{ asset('frontend/dist/images/favicon/favicon.png') }}" />
+
+
     <link rel="stylesheet" href="{{ asset('frontend/fontawesome-free-5.15.4-web/css/all.min.css') }}">
     <style>
         .vjs-poster {
@@ -21,7 +23,6 @@
 </head>
 
 <body style="background-color: #ebebf2;">
-
     <!-- Title Starts Here -->
     <header class="bg-transparent">
         <div class="container-fluid">
@@ -77,6 +78,7 @@
                             <source src="" class="w-100" />
                         </video>
                     </div>
+                    {{-- Tab --}}
                     <div class="course-description-start-content">
                         <h5 class="font-title--sm material-title">{{ $course->title }}</h5>
                         <nav class="course-description-start-content-tab">
@@ -322,60 +324,170 @@
             {{-- Index Course Contents --}}
             <div class="col-lg-4">
                 <div class="videolist-area">
-                    <div class="videolist-area-heading">
-                        <h6>Nội dung bài học</h6>
-                        <p>Hoàn thành 5%</p>
-                    </div>
-                    <div class="videolist-area-bar">
-                        <span class="videolist-area-bar--progress"></span>
-                    </div>
-                    <div class="videolist-area-bar__wrapper">
-                        @foreach ($lessons as $lesson)
-                            <div class="videolist-area-wizard" data-lesson-description="{{ $lesson->description }}"
-                                data-lesson-notes="{{ $lesson->notes }}">
-                                <div class="wizard-heading">
-                                    <h6 class="">{{ $loop->iteration }}. {{ $lesson->title }}</h6>
-                                </div>
-                                @foreach ($lesson->material as $material)
-                                    <div class="main-wizard"
-                                        data-material-title="{{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $material->title }}">
-                                        <div class="main-wizard__wrapper">
-                                            <a class="main-wizard-start"
-                                                onclick="show_video('{{ $material->content }}')">
-                                                @if ($material->type == 'video')
-                                                    <div class="main-wizard-icon">
-                                                        <i class="far fa-play-circle fa-lg"></i>
+                    <!-- Tabs nav -->
+                    <ul class="nav nav-tabs border-button " id="lessonTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="lessons-tab" data-bs-toggle="tab"
+                                data-bs-target="#lessons" type="button" role="tab" aria-controls="lessons"
+                                aria-selected="true">
+                                Bài học
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="quizzes-tab" data-bs-toggle="tab" data-bs-target="#quizzes"
+                                type="button" role="tab" aria-controls="quizzes" aria-selected="false">
+                                Bài kiểm tra
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tabs content -->
+                    <div class="tab-content mt-3" id="lessonTabsContent">
+                        <!-- Tab 1: Bài học -->
+                        <div class="tab-pane fade show active" id="lessons" role="tabpanel"
+                            aria-labelledby="lessons-tab">
+                            <div class="videolist-area-heading">
+                                <h6>Nội dung bài học</h6>
+                                <p>Hoàn thành 5%</p>
+                            </div>
+                            <div class="videolist-area-bar">
+                                <span class="videolist-area-bar--progress"></span>
+                            </div>
+                            <div class="videolist-area-bar__wrapper">
+                                @foreach ($lessons as $lesson)
+                                    <div class="videolist-area-wizard"
+                                        data-lesson-description="{{ $lesson->description }}"
+                                        data-lesson-notes="{{ $lesson->notes }}">
+                                        <div class="wizard-heading"
+                                            style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;"
+                                            onclick="toggleLesson(this)">
+                                            <h6 class="mb-0">{{ $loop->iteration }}. {{ $lesson->title }}</h6>
+                                            <i class="fas fa-chevron-down rotate-icon"></i>
+                                        </div>
+
+                                        <div class="lesson-materials" style="display: none; margin-top: 8px;">
+                                            @foreach ($lesson->material as $material)
+                                                <div class="main-wizard"
+                                                    data-material-title="{{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $material->title }}">
+                                                    <div class="main-wizard__wrapper">
+                                                        @if ($material->type == 'video')
+                                                            <a class="main-wizard-start"
+                                                                onclick="show_video('{{ $material->content }}')">
+                                                                <div class="main-wizard-icon">
+                                                                    <i class="far fa-play-circle fa-lg"></i>
+                                                                </div>
+                                                                <div class="main-wizard-title">
+                                                                    <p>{{ $loop->parent->iteration }}.{{ $loop->iteration }}
+                                                                        {{ $material->title }}</p>
+                                                                </div>
+                                                            </a>
+                                                        @elseif($material->type == 'document')
+                                                            <a class="main-wizard-start"
+                                                                onclick="open_file('{{ $material->content }}')">
+                                                                <div class="main-wizard-icon">
+                                                                    <i class="fas fa-book fa-lg text-success"></i>
+                                                                </div>
+                                                                <div class="main-wizard-title">
+                                                                    <p>{{ $loop->parent->iteration }}.{{ $loop->iteration }}
+                                                                        {{ $material->title }}</p>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+
+                                                        <div class="main-wizard-end d-flex align-items-center">
+                                                            <span>12:34</span>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    value=""
+                                                                    style="border-radius: 0px; margin-left: 5px;" />
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                @else
-                                                    <div class="main-wizard-icon">
-                                                        <i class="far fa-file fa-lg text-success"></i>
-                                                    </div>
-                                                @endif
-                                                <div class="main-wizard-title">
-                                                    <p>{{ $loop->parent->iteration }}.{{ $loop->iteration }}
-                                                        {{ $material->title }}
-                                                    </p>
                                                 </div>
-                                            </a>
-                                            <div class="main-wizard-end d-flex align-items-center">
-                                                <span>12:34</span>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        style="border-radius: 0px; margin-left: 5px;" />
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
-                        @endforeach
+                        </div>
+
+                        <!-- Tab 2: Bài kiểm tra -->
+                        <div class="tab-pane fade" id="quizzes" role="tabpanel" aria-labelledby="quizzes-tab">
+                            <div class="videolist-area-heading">
+                                <h6>Danh sách bài kiểm tra</h6>
+                                <p>Có {{ count($course->quiz ?? []) }} bài kiểm tra</p>
+                            </div>
+
+                            @if (!empty($course->quiz))
+                                <div class="list-group mt-3 px-4">
+                                    @foreach ($course->quiz as $quiz)
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                                            data-bs-toggle="modal" data-bs-target="#startExamModal"
+                                            onclick="nameQuiz('{{ $quiz->title }}', '{{ $quiz->test_time }}', '{{ $quiz->id }}')">
+                                            <span><i
+                                                    class="fas fa-clipboard-list me-2 text-primary"></i>{{ $quiz->title }}</span>
+                                            <span class="badge bg-success">Làm bài</span>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @else
+                                <p class="text-muted mt-3 px-4">Chưa có bài kiểm tra nào.</p>
+                            @endif
+                        </div>
                     </div>
+
+                    <!-- CSS -->
+                    <style>
+                        .rotate-icon {
+                            transition: transform 0.3s ease;
+                        }
+
+                        .rotate-icon.rotated {
+                            transform: rotate(180deg);
+                        }
+
+                        .nav-tabs .nav-link {
+                            color: #000;
+                            /* tab bình thường là màu đen */
+                        }
+
+                        .nav-tabs .nav-link.active {
+                            color: #0d6efd;
+                            /* tab active màu xanh Bootstrap */
+                            font-weight: 600;
+                            border-color: #0d6efd #0d6efd #fff;
+                            /* cho viền xanh đồng bộ */
+                        }
+                    </style>
                 </div>
             </div>
         </div>
     </div>
     <!-- Course Description Ends Here -->
 
+    {{-- Modal xác nhận làm bài kiểm tra --}}
+    <div class="modal fade" id="startExamModal" tabindex="-1" aria-labelledby="startExamModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="startExamModalLabel">BÀI KIỂM TRA</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <h5 class="fw-bold mb-3">Bài kiểm tra: <span class="text-primary" id="name-quiz"></span></h5>
+                    <p class="mb-4">Thời gian làm bài: <strong id="test_time">45 phút</strong></p>
+                    <p>Bạn có chắc chắn muốn bắt đầu làm bài kiểm tra này không?</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" onclick="startQuiz()" class="btn btn-success">Bắt đầu làm bài</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Modal đánh giá -->
     <div class="modal fade modal--rating" id="ratingModal" tabindex="-1" aria-labelledby="ratingModal"
         aria-hidden="true" data-backdrop="false">
@@ -404,6 +516,40 @@
 
 
 
+    <script>
+        var idQuiz = null;
+        // toggleLesson: đặt trực tiếp (sau khi jQuery đã load)
+        function toggleLesson(element) {
+            const $lessonWrapper = $(element).closest('.videolist-area-wizard');
+            const $materials = $lessonWrapper.find('.lesson-materials');
+            const $icon = $(element).find('.rotate-icon');
+
+            // Đóng các lesson khác
+            $('.lesson-materials').not($materials).slideUp(200);
+            $('.rotate-icon').not($icon).removeClass('rotated');
+
+            // Mở / đóng lesson hiện tại
+            $materials.slideToggle(200);
+            $icon.toggleClass('rotated');
+        }
+        // Gắn tên bài kiểm tra vào modal
+        function nameQuiz(title, test_time, id) {
+            idQuiz = id;
+            console.log(title);
+            document.getElementById('name-quiz').textContent = title;
+            document.getElementById('test_time').textContent = test_time + ' phút';
+        }
+        // Bắt đầu làm bài
+        const baseRoute = "{{ route('test', ':id') }}"; // :id là placeholder
+        function startQuiz() {
+            if (!idQuiz) return;
+            const url = baseRoute.replace(':id', idQuiz);
+            window.location.href = url;
+        }
+    </script>
+
+    <!-- Các script thư viện: GIỮ 1 bản jQuery THÔI. -->
+    <!-- Xóa hoặc comment dòng duplicate jQuery (dưới đây giữ file local, comment CDN) -->
     <script src="{{ asset('frontend/src/js/jquery.min.js') }}"></script>
     <script src="{{ asset('frontend/src/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/src/scss/vendors/plugin/js/video.min.js') }}"></script>
@@ -413,45 +559,81 @@
     <script src="{{ asset('frontend/src/scss/vendors/plugin/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('frontend/src/scss/vendors/plugin/js/jquery.star-rating-svg.js') }}"></script>
     <script src="{{ asset('frontend/src/js/app.js') }}"></script>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+
+    <!-- Nếu bạn muốn dùng CDN thay file local, hãy comment file local ở trên và mở dòng dưới -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 
     <script>
-        $(".my-rating").starRating({
-            starSize: 30,
-            activeColor: "#FF7A1A",
-            hoverColor: "#FF7A1A",
-            ratedColors: ["#FF7A1A", "#FF7A1A", "#FF7A1A", "#FF7A1A", "#FF7A1A"],
-            starShape: "rounded",
-        });
+        // ensure DOM ready
+        $(function() {
+            // Nếu bạn muốn chỉ click header để toggle (không click toàn wrapper),
+            // hãy bỏ bớt handler on '.videolist-area-wizard' hoặc dùng stopPropagation ở đây.
 
-        function show_video(e) {
-            let link = "{{ asset('uploads/courses/contents') }}/" + e
+            // tránh handler chung làm rối: muốn vẫn cập nhật mô tả khi click header:
+            $('.videolist-area-wizard > .wizard-heading').on('click', function(e) {
+                // note: toggleLesson already được gọi bởi onclick inline; nếu muốn chuyển hoàn toàn lên jQuery
+                // bạn có thể thay onclick trên HTML bằng: toggleLesson(this);
+                // ở đây ta cập nhật description/notes
+                var lessonWrapper = $(this).closest('.videolist-area-wizard');
+                var lessonDescription = lessonWrapper.data('lesson-description');
+                var lessonNotes = lessonWrapper.data('lesson-notes');
 
-            var video = document.getElementById('myvideo');
-            video.src = link;
-            video.play();
-        }
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('.videolist-area-wizard').on('click', function() {
-                // Get lesson and material details
-                var lessonDescription = $(this).data('lesson-description');
-                var lessonNotes = $(this).data('lesson-notes');
-                // Update lesson description
-                $('#nav-ldescrip .lesson-description p').html(lessonDescription);
-                // Update lesson notes
-                $('#nav-lnotes .course-notes-area .course-notes-item p').html(lessonNotes);
+                $('#nav-ldescrip .lesson-description p').html(lessonDescription || '');
+                $('#nav-lnotes .course-notes-area .course-notes-item p').html(lessonNotes || '');
+                // prevent bubbling to parent handlers if any
+                e.stopPropagation();
             });
 
-            $('.main-wizard').on('click', function() {
-                // Get material title
-                var materialTitle = $(this).data('material-title');
-                // Update material title
+            // Khi click vào material (item), không muốn trigger click của video-list wrapper
+            $('.main-wizard').on('click', function(e) {
+                var materialTitle = $(this).data('material-title') || '';
                 $('.material-title').html(materialTitle);
+                // stop parent click (nếu có)
+                e.stopPropagation();
             });
+
+            // Nếu a.main-wizard-start có onclick show_video/open_file thì ngăn chặn bubbling
+            $('.main-wizard-start').on('click', function(e) {
+                e.stopPropagation();
+                // tiếp tục để onclick inline chạy (show_video/open_file)
+            });
+
+            // starRating init (giữ nguyên)
+            if ($.fn.starRating) {
+                $(".my-rating").starRating({
+                    starSize: 30,
+                    activeColor: "#FF7A1A",
+                    hoverColor: "#FF7A1A",
+                    ratedColors: ["#FF7A1A", "#FF7A1A", "#FF7A1A", "#FF7A1A", "#FF7A1A"],
+                    starShape: "rounded",
+                });
+            }
+
+            // show_video function dùng vanilla (bạn đã có bản dưới, giữ hoặc thay thế)
+            window.show_video = function(e) {
+                let link = "{{ asset('uploads/courses/contents') }}/" + e;
+                var video = document.getElementById('myvideo');
+                if (video) {
+                    // set source properly for <video> element
+                    // nếu <video> có <source>, update src on source then load()
+                    var source = video.querySelector('source');
+                    if (source) {
+                        source.src = link;
+                        video.load();
+                        video.play().catch(() => {});
+                    } else {
+                        video.src = link;
+                        video.play().catch(() => {});
+                    }
+                }
+            };
+
+            // open_file: nếu bạn có, define giống show_video nhưng mở tab mới
+            window.open_file = function(path) {
+                let link = "{{ asset('uploads/courses/contents') }}/" + path;
+                window.open(link, '_blank');
+            };
         });
     </script>
 

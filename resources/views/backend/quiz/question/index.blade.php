@@ -55,7 +55,6 @@
                                         <table id="example3" class="display" style="min-width: 845px">
                                             <thead>
                                                 <tr>
-                                                    {{-- <th>{{ __('Tên bài kiểm tra') }}</th> --}}
                                                     <th>{{ __('Dạng câu hỏi') }}</th>
                                                     <th>{{ __('Câu hỏi') }}</th>
                                                     <th>{{ __('Đáp án A') }}</th>

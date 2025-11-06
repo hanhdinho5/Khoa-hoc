@@ -50,10 +50,11 @@ class AuthenticationController extends Controller
             if ($user) {
                 if ($user->status == 1) {
                     if (Hash::check($request->password, $user->password)) {
-                        // Xoá toàn bộ session cũ, nếu đang đăng nhập với giảng viên
+                        // Xoá toàn bộ session cũ, nếu đang đăng nhập với học viên
                         session()->flush();
                         // Lưu thông tin vào session
                         $this->setSession($user);
+                        // dd(request()->session());
                         return redirect()->route('dashboard')->with('success', 'Đăng nhập thành công!');
                     } else
                         return redirect()->route('login')->with('error', 'Tên người dùng hoặc mật khẩu không đúng!');
@@ -76,9 +77,8 @@ class AuthenticationController extends Controller
                 'emailAddress' => encryptor('encrypt', $user->email),
                 'role_id' => encryptor('encrypt', $user->role_id),
                 'accessType' => encryptor('encrypt', $user->full_access),
-                'role' => encryptor('encrypt', $user->role->name),
-                'roleIdentitiy' => encryptor('encrypt', $user->role->identity),
-                'language' => encryptor('encrypt', $user->language),
+                'role' => encryptor('encrypt', $user->role?->name),
+                'roleIdentitiy' => encryptor('encrypt', $user->role?->identity),
                 'image' => $user->image ?? null,
                 'instructorImage' => $user?->instructor->image ?? 'Không thấy người hướng dẫn',
             ]
