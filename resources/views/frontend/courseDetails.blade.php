@@ -602,7 +602,7 @@
                                                         {{ $course->instructor?->designation
                                                             ? $course->instructor?->designation
                                                             : 'No
-                                                                                                                                                                    Designation' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            Designation' }}
                                                     </p>
                                                     <div class="d-flex align-items-center instructor-text-bottom">
                                                         <div class="d-flex align-items-center ratings-icon">
@@ -2498,15 +2498,20 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="cart__checkout-process">
+                            <div class="cart__checkout-process text-center">
                                 @if ($course->price)
                                     <p class="time-left text-center">Còn 5 giờ nữa là hết giá này</p>
                                 @endif
-                                <form action="#">
-                                    <a href="{{ route('add.to.cart', $course->id) }}"
-                                        class="text-white button button-lg button--primary w-100">Thêm giỏ hàng</a>
+                                @if (!$enrollment)
+                                    <form action="#">
+                                        <a href="{{ route('add.to.cart', $course->id) }}"
+                                            class="text-white button button-lg button--primary w-100">Thêm giỏ hàng</a>
 
-                                </form>
+                                    </form>
+                                @else
+                                    <button class="btn btn-success p-3" type="button">Bạn đã đăng ký khoá học
+                                        này</button>
+                                @endif
                             </div>
                             <div class="cart__includes-info">
                                 <h6 class="font-title--card">Khóa học này bao gồm:</h6>

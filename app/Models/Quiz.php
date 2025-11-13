@@ -18,4 +18,8 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class);
     }
+    public function studentTest()
+    {
+        return $this->hasMany(studentTest::class);
+    }
 }

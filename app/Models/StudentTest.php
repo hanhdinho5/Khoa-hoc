@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class StudentTest extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'started_at' => 'datetime',
+        'finished_at' => 'datetime',
+    ];
     protected $fillable = [
         'student_id',
         'quiz_id',

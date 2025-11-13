@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Course\Courses\AddNewRequest;
 use App\Http\Requests\Backend\Course\Courses\UpdateRequest;
 use App\Models\CourseCategory;
+use App\Models\Enrollment;
 use App\Models\Instructor;
 use App\Models\Lesson;
 use App\Models\Material;
@@ -96,9 +97,23 @@ class CourseController extends Controller
 
     public function frontShow($id)
     {
-        $course = Course::findOrFail(encryptor('decrypt', $id));
-        // dd($course);
-        return view('frontend.courseDetails', compact('course'));
+        // Giải mã ID khóa học một lần
+        $courseId = encryptor('decrypt', $id);
+        $course = Course::findOrFail($courseId);
+
+        $enrollment = null;
+
+        // Nếu học viên đã đăng nhập, kiểm tra đã đăng ký khóa này chưa
+        if (session('studentLogin')) {
+            $studentId = encryptor('decrypt', session('userId'));
+
+            $enrollment = Enrollment::where('student_id', $studentId)
+                ->where('course_id', $courseId)
+                ->first();
+        }
+
+        // Trả về view, truyền cả thông tin khóa học và đăng ký
+        return view('frontend.courseDetails', compact('course', 'enrollment'));
     }
 
 

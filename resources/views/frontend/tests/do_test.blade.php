@@ -53,7 +53,7 @@
         <p>Thời gian làm bài: <strong id="timer">{{ $quiz->test_time }}</strong> phút</p>
         <form action="{{ route('test.submit', $quiz->id) }}" method="POST" id="quizForm">
             @csrf
-
+            <input type="hidden" name="student_test_id" value="{{ $studentTest->id }}">
             @foreach ($quiz->questions as $index => $q)
                 <div class="card mb-3">
                     <div class="card-header">

@@ -75,8 +75,21 @@
     </header>
     <div class="container py-4">
         <h3 class="mb-2">{{ $studentTest->quiz->title }}</h3>
-        <p>Điểm: <strong>{{ $studentTest->score }}</strong></p>
-        <p>Số câu đúng: {{ $studentTest->correct_count }}/{{ $studentTest->total_questions }}</p>
+        <p>Điểm: <strong style="padding-left: 86px">{{ $studentTest->score }}</strong></p>
+        <p>Số câu đúng: <strong
+                style="padding-left: 27px">{{ $studentTest->correct_count }}/{{ $studentTest->total_questions }}</strong>
+        </p>
+        <p class="mb-3">Thời gian:
+            @php
+                $seconds = $studentTest->finished_at->diffInSeconds($studentTest->started_at);
+                $minutes = floor($seconds / 60);
+                $remainingSeconds = $seconds % 60;
+            @endphp
+
+            <strong style="padding-left: 54px">
+                {{ $minutes }} phút {{ $remainingSeconds }} giây
+            </strong>
+        </p>
 
         @foreach ($studentTest->studentAnswer as $index => $item)
             @php

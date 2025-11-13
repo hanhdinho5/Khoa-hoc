@@ -86,38 +86,69 @@
                                 <button class="nav-link active" id="nav-ldescrip-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-ldescrip" type="button" role="tab"
                                     aria-controls="nav-ldescrip" aria-selected="true">
-                                    Lesson Description
+                                    Mô tả bài học
                                 </button>
                                 <button class="nav-link" id="nav-lnotes-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-lnotes" type="button" role="tab"
-                                    aria-controls="nav-lnotes" aria-selected="false">Lesson Notes</button>
+                                    aria-controls="nav-lnotes" aria-selected="false">Ghi chú bài học</button>
                                 <button class="nav-link" id="nav-lcomments-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-lcomments" type="button" role="tab"
-                                    aria-controls="nav-lcomments" aria-selected="false">Comments</button>
+                                    aria-controls="nav-lcomments" aria-selected="false">Bình luận</button>
                                 <button class="nav-link" id="nav-loverview-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-loverview" type="button" role="tab"
-                                    aria-controls="nav-loverview" aria-selected="false">Course Overview</button>
+                                    aria-controls="nav-loverview" aria-selected="false">Tổng quan</button>
                                 <button class="nav-link" id="nav-linstruc-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-linstruc" type="button" role="tab"
-                                    aria-controls="nav-linstruc" aria-selected="false">Instructor</button>
+                                    aria-controls="nav-linstruc" aria-selected="false">Giảng viên</button>
                             </div>
                         </nav>
                         <div class="tab-content course-description-start-content-tabitem" id="nav-tabContent">
-                            <!-- Lesson Description Starts Here -->
+                            <!-- Mô tả bài học Starts Here -->
                             <div class="tab-pane fade show active" id="nav-ldescrip" role="tabpanel"
                                 aria-labelledby="nav-ldescrip-tab">
                                 <div class="lesson-description">
-                                    <p>
-                                        Donec imperdiet erat tortor, nec consectetur odio fermentum et. Mauris vehicula
-                                        faucibus viverra. Vestibulum varius ante enim. eu posuere ligula eleifend non.
-                                        Praesent sapien nisi, luctus a tellus
-                                        a, porta dapibus massa. Cras non mattis mauris. Etiam convallis purus a ante
-                                        mattis,
-                                        id tincidunt sapien hendrerit. Sed laoreet Check out my portfolio: <a
-                                            href="#">https://bit.ly/2OZkYCo</a>
-                                    </p>
+                                    <div
+                                        style="max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                                        <p>
+                                            Khóa học tiếng Anh mà tôi tham gia thực sự là một <strong>trải nghiệm đáng
+                                                giá</strong>, không chỉ giúp cải thiện khả năng ngôn ngữ mà còn mở ra
+                                            nhiều cơ hội mới trong học tập và công việc. Từ buổi học đầu tiên, tôi đã
+                                            nhận thấy sự khác biệt so với cách học truyền thống, bởi mỗi bài học đều
+                                            được thiết kế <em>rất khoa học</em>, kết hợp giữa ngữ pháp, từ vựng, kỹ năng
+                                            nghe, nói, đọc và viết một cách hài hòa.
+                                        </p>
+
+                                        <p>
+                                            Giáo viên không chỉ truyền đạt kiến thức một cách sinh động mà còn tạo ra
+                                            môi trường học tập tương tác, khuyến khích học viên tham gia vào các hoạt
+                                            động nhóm, thảo luận và thực hành ngôn ngữ trực tiếp. Ngoài ra, khóa học còn
+                                            cung cấp nhiều tài liệu học tập đa dạng, từ sách, bài tập online cho đến các
+                                            video minh họa sống động, giúp việc ôn luyện tại nhà trở nên <strong>dễ dàng
+                                                và hiệu quả hơn</strong>.
+                                        </p>
+
+                                        <p>
+                                            Một điểm nổi bật khác của khóa học là việc chú trọng đến việc phát triển
+                                            <em>kỹ năng giao tiếp thực tế</em>, với các tình huống mô phỏng đời sống,
+                                            giúp học viên tự tin hơn khi nói tiếng Anh trong các cuộc hội thoại hàng
+                                            ngày, phỏng vấn hoặc thuyết trình. Qua từng tuần học, tôi cảm nhận rõ rệt sự
+                                            tiến bộ của bản thân, từ việc hiểu và sử dụng ngữ pháp chuẩn, mở rộng vốn từ
+                                            vựng, đến khả năng phát âm và phản xạ nhanh khi nghe – nói.
+                                        </p>
+
+                                        <p>
+                                            Không những thế, khóa học còn xây dựng một cộng đồng học viên <strong>thân
+                                                thiện</strong>, nơi mọi người có thể trao đổi kinh nghiệm, chia sẻ mẹo
+                                            học tập và động viên nhau cùng tiến bộ. Nhìn lại chặng đường đã qua, tôi
+                                            nhận ra rằng khóa học này không chỉ đơn thuần là học tiếng Anh, mà còn là
+                                            một hành trình phát triển bản thân, rèn luyện sự kiên nhẫn, kỷ luật và tinh
+                                            thần tự học, mở ra nhiều cánh cửa mới trong học tập, sự nghiệp và cả trong
+                                            giao tiếp quốc tế.
+                                        </p>
+                                    </div>
+
                                 </div>
-                                <!-- Lesson Description Ends Here -->
+                                <!-- Mô tả bài học Ends Here -->
                             </div>
                             <!-- Course Notes Starts Here -->
                             <div class="tab-pane fade" id="nav-lnotes" role="tabpanel"
@@ -144,18 +175,18 @@
                                 aria-labelledby="nav-lcomments-tab">
                                 <div class="lesson-comments">
                                     <div class="feedback-comment pt-0 ps-0 pe-0">
-                                        <h6 class="font-title--card">Add a Public Comment</h6>
+                                        <h6 class="font-title--card">Bình luận bài học</h6>
                                         <form action="#">
-                                            <label for="comment">Comment</label>
-                                            <textarea class="form-control" id="comment" placeholder="Add a Public Comment"></textarea>
+                                            <label for="comment">Bình luận</label>
+                                            <textarea class="form-control" id="comment"></textarea>
                                             <button type="submit"
-                                                class="button button-md button--primary float-end">Post
-                                                Comment</button>
+                                                class="button button-md button--primary float-end">Gửi bình
+                                                luận</button>
                                         </form>
                                     </div>
                                     <div class="students-feedback pt-0 ps-0 pe-0 pb-0 mb-0">
                                         <div class="students-feedback-heading">
-                                            <h5 class="font-title--card">Comments <span>(57,685)</span></h5>
+                                            <h5 class="font-title--card">Bình luận <span>(57,685)</span></h5>
                                         </div>
                                         <div class="students-feedback-item">
                                             <div class="feedback-rating">
@@ -165,18 +196,17 @@
                                                             alt="Image" />
                                                     </div>
                                                     <div class="text">
-                                                        <h6><a href="#">Harry Pinsky</a></h6>
-                                                        <p>1 hour ago</p>
+                                                        <h6><a href="#">Đức Long</a></h6>
+                                                        <p>1 giờ trước</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <p>
-                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor,
-                                                vestibulum ante non, vulputate nibh. Cras non molestie diam. Great
-                                                Course
-                                                for Beginner 😀
+                                                Khóa học này thực sự rất bổ ích. Tôi đã học được nhiều kiến thức mới và
+                                                cải thiện khả năng giao tiếp tiếng Anh của mình rất nhiều 😀
                                             </p>
                                         </div>
+
                                         <div class="students-feedback-item">
                                             <div class="feedback-rating">
                                                 <div class="feedback-rating-start">
@@ -185,16 +215,17 @@
                                                             alt="Image" />
                                                     </div>
                                                     <div class="text">
-                                                        <h6><a href="#">Harry Pinsky</a></h6>
-                                                        <p>2 hour ago</p>
+                                                        <h6><a href="#">Hải Yến</a></h6>
+                                                        <p>2 giờ trước</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <p>
-                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor,
-                                                vestibulum ante non, vulputate nibh.
+                                                Thầy cô rất nhiệt tình và dễ hiểu, các bài tập và ví dụ thực hành giúp
+                                                tôi nhớ kiến thức lâu hơn.
                                             </p>
                                         </div>
+
                                         <div class="students-feedback-item">
                                             <div class="feedback-rating">
                                                 <div class="feedback-rating-start">
@@ -203,18 +234,17 @@
                                                             alt="Image" />
                                                     </div>
                                                     <div class="text">
-                                                        <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                        <p>1 day ago</p>
+                                                        <h6><a href="#">A Páo</a></h6>
+                                                        <p>1 ngày trước</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <p>
-                                                Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque
-                                                vestibulum
-                                                massa eget consequat scelerisque. Phasellus varius risus nec maximus
-                                                auctor.
+                                                Các bài học được thiết kế rất khoa học và dễ theo dõi. Tôi cảm thấy tự
+                                                tin hơn khi giao tiếp tiếng Anh hàng ngày.
                                             </p>
                                         </div>
+
                                         <div class="students-feedback-item border-0">
                                             <div class="feedback-rating">
                                                 <div class="feedback-rating-start">
@@ -223,17 +253,18 @@
                                                             alt="Image" />
                                                     </div>
                                                     <div class="text">
-                                                        <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                        <p>1 day ago</p>
+                                                        <h6><a href="#">Tuấn Anh</a></h6>
+                                                        <p>1 ngày trước</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <p>
-                                                Cras non molestie diam. Aenean vulputate nisi ligula. Quisque in tempus
-                                                sapien. Quisque vestibulum massa eget consequat scelerisque.
+                                                Tôi thực sự hài lòng với khóa học này. Các kiến thức được truyền đạt rất
+                                                chi tiết, dễ áp dụng và phù hợp với mọi trình độ.
                                             </p>
                                         </div>
-                                        <button class="button button-md button--primary-outline">Load More</button>
+
+                                        <button class="button button-md button--primary-outline">Xem thêm</button>
                                     </div>
                                 </div>
                                 <!-- Lesson Comments Ends Here -->
@@ -339,6 +370,13 @@
                                 Bài kiểm tra
                             </button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="quizDone-tab" data-bs-toggle="tab"
+                                data-bs-target="#quizDone" type="button" role="tab" aria-controls="quizDone"
+                                aria-selected="false">
+                                Bài thi đã làm
+                            </button>
+                        </li>
                     </ul>
 
                     <!-- Tabs content -->
@@ -435,6 +473,48 @@
                                 <p class="text-muted mt-3 px-4">Chưa có bài kiểm tra nào.</p>
                             @endif
                         </div>
+                        <div class="tab-pane fade" id="quizDone" role="tabpanel" aria-labelledby="quizDone-tab">
+                            <div class="videolist-area-heading">
+                                <h6>Bài kiểm tra đã làm </p>
+                            </div>
+                            @if (!empty($course->quiz))
+                                <div class="list-group mt-3 px-4">
+                                    @foreach ($course->quiz as $quiz)
+                                        @if ($studentTests->where('quiz_id', $quiz->id)->count() > 0)
+                                            <a href="#"
+                                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center bg-light text-muted"
+                                                style="cursor: default;">
+                                                <span>
+                                                    <i
+                                                        class="fas fa-check-circle me-2 text-success"></i>{{ $quiz->title }}
+                                                </span>
+                                            </a>
+                                        @endif
+                                        <?php $attempt_number = 0; ?>
+
+                                        @foreach ($studentTests as $sTest)
+                                            @if ($sTest->quiz_id == $quiz->id)
+                                                <a class="ps-5 py-2 border-start"
+                                                    href="{{ route('test.result', $sTest->id) }}">
+                                                    <i class="fas fa-angle-right me-2 text-muted"></i>
+                                                    <span class="fw-light">Lần làm:
+                                                        <?= ++$attempt_number ?></span> —
+                                                    <span class="text-success">Điểm:
+                                                        {{ $sTest->score }}/10</span>
+                                                    <span
+                                                        class="text-muted small ms-2">({{ $sTest->created_at->format('d/m/Y H:i') }})</span>
+                                                </a>
+                                            @endif
+                                        @endforeach
+                                        {{-- @if ($attempt_number <= 0)
+                                            <small class="fload"> Chưa làm bài </small>
+                                        @endif --}}
+                                    @endforeach
+                                </div>
+                            @else
+                                <p class="text-muted mt-3 px-4">Chưa làm bài thi nào.</p>
+                            @endif
+                        </div>
                     </div>
 
                     <!-- CSS -->
@@ -506,13 +586,39 @@
                 <div class="modal-footer border-0">
                     <form action="#" class="w-100">
                         <label for="messages">Đánh giá</label>
-                        <textarea id="messages" placeholder="How is your to feeling taking these course?" class="w-100"></textarea>
+                        <textarea id="messages" placeholder="Bạn cảm thấy thế nào khi tham gia khóa học này?" class="w-100"></textarea>
                         <button type="submit" class="button button-md button--primary w-100">Gửi</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- 1. jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2. Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- 3. Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('#ratingModal form');
+            const modalEl = document.getElementById('ratingModal');
+            const bootstrapModal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // ngăn form reload trang
+
+                // Đóng modal
+                bootstrapModal.hide();
+
+                // Hiện thông báo thành công bằng Toastr
+                toastr.success("Cảm ơn bạn! Đánh giá của bạn đã được ghi nhận.");
+            });
+        });
+    </script>
 
 
 
