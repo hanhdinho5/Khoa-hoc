@@ -9,8 +9,8 @@
 @section('content')
 
     <!--**********************************
-            Content body start
-        ***********************************-->
+                Content body start
+            ***********************************-->
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
@@ -69,7 +69,7 @@
                                                             <span
                                                                 class="badge {{ $d->category_status == 1
                                                                     ? "
-                                                                                                                                                                                        badge-success"
+                                                                                                                                                                                                                                                        badge-success"
                                                                     : 'badge-danger' }}">
                                                                 @if ($d->category_status == 1)
                                                                     {{ __('Active') }}
@@ -77,10 +77,11 @@
                                                                 @endif
                                                             </span>
                                                         </td>
-                                                        <td>
-                                                            <img class="rounded" width="200" height="100"
+                                                        <td style="width: 200px; height: 100px; overflow: hidden;">
+                                                            <img class="rounded"
                                                                 src="{{ asset('uploads/courseCategories/' . $d->category_image) }}"
-                                                                alt="">
+                                                                alt=""
+                                                                style="width: 100%; height: 100%; object-fit: cover; display: block;">
                                                         </td>
                                                         <td>
                                                             <a href="{{ route('courseCategory.edit', $d->id) }}"
@@ -146,7 +147,7 @@
                                                             <strong><span
                                                                     class="badge {{ $d->category_status == 1
                                                                         ? "
-                                                                                                                                                                                                badge-success"
+                                                                                                                                                                                                                                                                    badge-success"
                                                                         : 'badge-danger' }}">
                                                                     @if ($d->category_status == 1)
                                                                         {{ __('Active') }}
@@ -185,8 +186,8 @@
         </div>
     </div>
     <!--**********************************
-            Content body end
-        ***********************************-->
+                Content body end
+            ***********************************-->
 
 @endsection
 

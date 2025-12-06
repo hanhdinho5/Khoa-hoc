@@ -68,105 +68,97 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="profile-statistics">
-                                <div class="text-center mt-4 border-bottom-1 pb-3">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h3 class="m-b-0">150</h3><span>Follower</span>
-                                        </div>
-                                        <div class="col">
-                                            <h3 class="m-b-0">140</h3><span>Place Stay</span>
-                                        </div>
-                                        <div class="col">
-                                            <h3 class="m-b-0">45</h3><span>Reviews</span>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="javascript:void()" class="btn btn-primary px-5 mr-3 mb-4">Follow</a>
-                                        <a href="javascript:void()" class="btn btn-dark px-3 mb-4">Send Message</a>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="profile-blog pt-3 border-bottom-1 pb-1">
-                                <h5 class="text-primary d-inline">Today Highlights</h5><a href="javascript:void()"
-                                    class="pull-right f-s-16">More</a>
+                                <h5 class="text-primary d-inline">Điểm nổi bật hôm nay</h5>
+                                <a href="javascript:void()" class="pull-right f-s-16">Xem thêm</a>
                                 <img src="{{ asset('images/profile/1.jpg') }}" alt=""
                                     class="img-fluid mt-4 mb-4 w-100">
-                                <h4>Darwin Creative Agency Theme</h4>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary
-                                    regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
-                                    your mouth.</p>
+                                <h4>Chủ đề Darwin Creative Agency</h4>
+                                <p>Một con sông nhỏ tên là Duden chảy ngang qua nơi này và cung cấp cho nó những điều cần
+                                    thiết.
+                                    Đây là một vùng đất tuyệt đẹp, nơi những câu văn được nướng lên bay thẳng vào miệng bạn.
+                                </p>
                             </div>
+
                             <div class="profile-interest mt-4 pb-2 border-bottom-1">
-                                <h5 class="text-primary d-inline">Interest</h5>
+                                <h5 class="text-primary d-inline">Sở thích</h5>
                                 <div class="row mt-4">
                                     <div class="col-lg-4 col-xl-4 col-sm-4 col-6 int-col">
                                         <a href="javascript:void()" class="interest-cat">
                                             <img src="{{ asset('images/profile/2.jpg') }}" alt="" class="img-fluid">
-                                            <p>Shopping Mall</p>
+                                            <p>Trung tâm mua sắm</p>
                                         </a>
                                     </div>
                                     <div class="col-lg-4 col-xl-4 col-sm-4 col-6 int-col">
                                         <a href="javascript:void()" class="interest-cat">
                                             <img src="{{ asset('images/profile/3.jpg') }}" alt="" class="img-fluid">
-                                            <p>Photography</p>
+                                            <p>Nhiếp ảnh</p>
                                         </a>
                                     </div>
                                     <div class="col-lg-4 col-xl-4 col-sm-4 col-6 int-col">
                                         <a href="javascript:void()" class="interest-cat">
                                             <img src="{{ asset('images/profile/4.jpg') }}" alt="" class="img-fluid">
-                                            <p>Art &amp; Gallery</p>
+                                            <p>Nghệ thuật &amp; Phòng trưng bày</p>
                                         </a>
                                     </div>
                                     <div class="col-lg-4 col-xl-4 col-sm-4 col-6 int-col">
                                         <a href="javascript:void()" class="interest-cat">
                                             <img src="{{ asset('images/profile/2.jpg') }}" alt="" class="img-fluid">
-                                            <p>Visiting Place</p>
+                                            <p>Địa điểm tham quan</p>
                                         </a>
                                     </div>
                                     <div class="col-lg-4 col-xl-4 col-sm-4 col-6 int-col">
                                         <a href="javascript:void()" class="interest-cat">
                                             <img src="{{ asset('images/profile/3.jpg') }}" alt=""
                                                 class="img-fluid">
-                                            <p>Shopping</p>
+                                            <p>Mua sắm</p>
                                         </a>
                                     </div>
                                     <div class="col-lg-4 col-xl-4 col-sm-4 col-6 int-col">
                                         <a href="javascript:void()" class="interest-cat">
                                             <img src="{{ asset('images/profile/4.jpg') }}" alt=""
                                                 class="img-fluid">
-                                            <p>Biking</p>
+                                            <p>Đạp xe</p>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="profile-news mt-4 pb-3">
-                                <h5 class="text-primary d-inline">Our Latest News</h5>
+                                <h5 class="text-primary d-inline">Tin mới nhất của chúng tôi</h5>
+
                                 <div class="media pt-3 pb-3">
                                     <img src="{{ asset('images/profile/5.jpg') }}" alt="image" class="mr-3">
                                     <div class="media-body">
                                         <h5 class="m-b-5">John Tomas</h5>
-                                        <p>I shared this on my fb wall a few months back, and I thought I'd share it here
-                                            again because it's such a great read</p>
+                                        <p>Tôi đã chia sẻ điều này lên tường Facebook của mình vài tháng trước và tôi muốn
+                                            chia sẻ lại
+                                            tại đây vì nó là một bài viết rất hay.</p>
                                     </div>
                                 </div>
+
                                 <div class="media pt-3 pb-3">
                                     <img src="{{ asset('images/profile/6.jpg') }}" alt="image" class="mr-3">
                                     <div class="media-body">
                                         <h5 class="m-b-5">John Tomas</h5>
-                                        <p>I shared this on my fb wall a few months back, and I thought I'd share it here
-                                            again because it's such a great read</p>
+                                        <p>Tôi đã chia sẻ điều này lên tường Facebook của mình vài tháng trước và tôi muốn
+                                            chia sẻ lại
+                                            tại đây vì nó là một bài viết rất hay.</p>
                                     </div>
                                 </div>
+
                                 <div class="media pt-3 pb-3">
                                     <img src="{{ asset('images/profile/7.jpg') }}" alt="image" class="mr-3">
                                     <div class="media-body">
                                         <h5 class="m-b-5">John Tomas</h5>
-                                        <p>I shared this on my fb wall a few months back, and I thought I'd share it here
-                                            again because it's such a great read</p>
+                                        <p>Tôi đã chia sẻ điều này lên tường Facebook của mình vài tháng trước và tôi muốn
+                                            chia sẻ lại
+                                            tại đây vì nó là một bài viết rất hay.</p>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -177,14 +169,13 @@
                                 <div class="custom-tab-1">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item"><a href="#my-posts" data-toggle="tab"
-                                                class="nav-link active show">Posts</a>
+                                                class="nav-link active show">Bài viết</a>
                                         </li>
-                                        <li class="nav-item"><a href="#about-me" data-toggle="tab"
-                                                class="nav-link">About
-                                                Me</a>
+                                        <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link">Giới
+                                                thiệu</a>
                                         </li>
                                         <li class="nav-item"><a href="#profile-settings" data-toggle="tab"
-                                                class="nav-link">Setting</a>
+                                                class="nav-link">Cài đặt thông tin</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
@@ -192,83 +183,96 @@
                                             <div class="my-post-content pt-3">
                                                 <div class="post-input">
                                                     <textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent"
-                                                        placeholder="Please type what you want...."></textarea> <a href="javascript:void()"><i
-                                                            class="ti-clip"></i> </a>
-                                                    <a href="javascript:void()"><i class="ti-camera"></i> </a><a
-                                                        href="javascript:void()" class="btn btn-primary">Post</a>
+                                                        placeholder="Vui lòng nhập nội dung bạn muốn..."></textarea>
+                                                    <a href="javascript:void()"><i class="ti-clip"></i></a>
+                                                    <a href="javascript:void()"><i class="ti-camera"></i></a>
+                                                    <a href="javascript:void()" class="btn btn-primary">Đăng bài</a>
                                                 </div>
+
                                                 <div class="profile-uoloaded-post border-bottom-1 pb-5">
                                                     <img src="{{ asset('images/profile/8.jpg') }}" alt=""
                                                         class="img-fluid">
                                                     <a class="post-title" href="javascript:void()">
-                                                        <h4>Collection of textile samples lay spread</h4>
+                                                        <h4>Bộ sưu tập mẫu vải được bày ra</h4>
                                                     </a>
-                                                    <p>A wonderful serenity has take possession of my entire soul like these
-                                                        sweet morning of spare which enjoy whole heart.A wonderful serenity
-                                                        has take possession of my entire soul like these sweet morning
-                                                        of spare which enjoy whole heart.</p>
-                                                    <button class="btn btn-primary mr-3"><span class="mr-3"><i
-                                                                class="fa fa-heart"></i></span>Like</button>
-                                                    <button class="btn btn-secondary"><span class="mr-3"><i
-                                                                class="fa fa-reply"></i></span>Reply</button>
+                                                    <p>Một sự thanh thản tuyệt vời chiếm trọn tâm hồn tôi, giống như buổi
+                                                        sáng ngọt ngào này mà tôi tận hưởng bằng cả trái tim.
+                                                        Một sự thanh thản tuyệt vời chiếm trọn tâm hồn tôi giống như những
+                                                        buổi sáng ngọt ngào này mà tôi tận hưởng bằng cả trái tim.</p>
+                                                    <button class="btn btn-primary mr-3">
+                                                        <span class="mr-3"><i class="fa fa-heart"></i></span>Thích
+                                                    </button>
+                                                    <button class="btn btn-secondary">
+                                                        <span class="mr-3"><i class="fa fa-reply"></i></span>Trả lời
+                                                    </button>
                                                 </div>
+
                                                 <div class="profile-uoloaded-post border-bottom-1 pb-5">
                                                     <img src="{{ asset('images/profile/9.jpg') }}" alt=""
                                                         class="img-fluid">
                                                     <a class="post-title" href="javascript:void()">
-                                                        <h4>Collection of textile samples lay spread</h4>
+                                                        <h4>Bộ sưu tập mẫu vải được bày ra</h4>
                                                     </a>
-                                                    <p>A wonderful serenity has take possession of my entire soul like these
-                                                        sweet morning of spare which enjoy whole heart.A wonderful serenity
-                                                        has take possession of my entire soul like these sweet morning
-                                                        of spare which enjoy whole heart.</p>
-                                                    <button class="btn btn-primary mr-3"><span class="mr-3"><i
-                                                                class="fa fa-heart"></i></span>Like</button>
-                                                    <button class="btn btn-secondary"><span class="mr-3"><i
-                                                                class="fa fa-reply"></i></span>Reply</button>
+                                                    <p>Một sự thanh thản tuyệt vời chiếm trọn tâm hồn tôi, giống như buổi
+                                                        sáng ngọt ngào này mà tôi tận hưởng bằng cả trái tim.
+                                                        Một sự thanh thản tuyệt vời chiếm trọn tâm hồn tôi giống như những
+                                                        buổi sáng ngọt ngào này mà tôi tận hưởng bằng cả trái tim.</p>
+                                                    <button class="btn btn-primary mr-3">
+                                                        <span class="mr-3"><i class="fa fa-heart"></i></span>Thích
+                                                    </button>
+                                                    <button class="btn btn-secondary">
+                                                        <span class="mr-3"><i class="fa fa-reply"></i></span>Trả lời
+                                                    </button>
                                                 </div>
+
                                                 <div class="profile-uoloaded-post pb-5">
                                                     <img src="{{ asset('images/profile/8.jpg') }}" alt=""
                                                         class="img-fluid">
                                                     <a class="post-title" href="javascript:void()">
-                                                        <h4>Collection of textile samples lay spread</h4>
+                                                        <h4>Bộ sưu tập mẫu vải được bày ra</h4>
                                                     </a>
-                                                    <p>A wonderful serenity has take possession of my entire soul like these
-                                                        sweet morning of spare which enjoy whole heart.A wonderful serenity
-                                                        has take possession of my entire soul like these sweet morning
-                                                        of spare which enjoy whole heart.</p>
-                                                    <button class="btn btn-primary mr-3"><span class="mr-3"><i
-                                                                class="fa fa-heart"></i></span>Like</button>
-                                                    <button class="btn btn-secondary"><span class="mr-3"><i
-                                                                class="fa fa-reply"></i></span>Reply</button>
+                                                    <p>Một sự thanh thản tuyệt vời chiếm trọn tâm hồn tôi, giống như buổi
+                                                        sáng ngọt ngào này mà tôi tận hưởng bằng cả trái tim.
+                                                        Một sự thanh thản tuyệt vời chiếm trọn tâm hồn tôi giống như những
+                                                        buổi sáng ngọt ngào này mà tôi tận hưởng bằng cả trái tim.</p>
+                                                    <button class="btn btn-primary mr-3">
+                                                        <span class="mr-3"><i class="fa fa-heart"></i></span>Thích
+                                                    </button>
+                                                    <button class="btn btn-secondary">
+                                                        <span class="mr-3"><i class="fa fa-reply"></i></span>Trả lời
+                                                    </button>
                                                 </div>
-                                                <div class="text-center mb-2"><a href="javascript:void()"
-                                                        class="btn btn-primary">Load More</a>
+
+                                                <div class="text-center mb-2">
+                                                    <a href="javascript:void()" class="btn btn-primary">Xem thêm</a>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div id="about-me" class="tab-pane fade">
                                             <div class="profile-about-me">
                                                 <div class="pt-4 border-bottom-1 pb-4">
-                                                    <h4 class="text-primary">About Me</h4>
-                                                    <p>A wonderful serenity has taken possession of my entire soul, like
-                                                        these sweet mornings of spring which I enjoy with my whole heart. I
-                                                        am alone, and feel the charm of existence was created for the
-                                                        bliss of souls like mine.I am so happy, my dear friend, so absorbed
-                                                        in the exquisite sense of mere tranquil existence, that I neglect my
-                                                        talents.</p>
-                                                    <p>A collection of textile samples lay spread out on the table - Samsa
-                                                        was a travelling salesman - and above it there hung a picture that
-                                                        he had recently cut out of an illustrated magazine and housed
-                                                        in a nice, gilded frame.</p>
+                                                    <h4 class="text-primary">Giới thiệu về tôi</h4>
+                                                    <p>Một sự tĩnh lặng tuyệt vời đã chiếm trọn tâm hồn tôi, giống như những
+                                                        buổi sáng ngọt ngào của mùa xuân mà tôi tận hưởng bằng cả trái tim.
+                                                        Tôi ở một mình, và cảm nhận được sức hấp dẫn của sự tồn tại dường
+                                                        như được tạo ra cho niềm hạnh phúc của những tâm hồn như tôi.
+                                                        Tôi rất hạnh phúc, bạn thân mến, bị cuốn vào cảm giác tuyệt vời của
+                                                        sự tồn tại yên bình đến mức tôi quên cả những tài năng của mình.</p>
+                                                    <p>Một bộ sưu tập các mẫu vải được bày ra trên bàn — Samsa là một nhân
+                                                        viên bán hàng lưu động — và phía trên nó treo một bức tranh mà anh
+                                                        ấy vừa cắt ra từ một tạp chí minh họa và đóng khung rất đẹp.</p>
                                                 </div>
                                             </div>
+
                                             <div class="profile-skills pt-2 border-bottom-1 pb-2">
-                                                <h4 class="text-primary mb-4">Skills</h4>
+                                                <h4 class="text-primary mb-4">Kỹ năng</h4>
                                                 <a href="javascript:void()"
-                                                    class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Admin</a>
+                                                    class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Quản
+                                                    trị</a>
                                                 <a href="javascript:void()"
-                                                    class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Dashboard</a>
+                                                    class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Bảng
+                                                    điều khiển</a>
                                                 <a href="javascript:void()"
                                                     class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Photoshop</a>
                                                 <a href="javascript:void()"
@@ -276,74 +280,78 @@
                                                 <a href="javascript:void()"
                                                     class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Responsive</a>
                                                 <a href="javascript:void()"
-                                                    class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Crypto</a>
+                                                    class="btn btn-outline-dark btn-rounded px-4 my-3 my-sm-0 mr-2 mb-1 m-b-10">Tiền
+                                                    điện tử</a>
                                             </div>
+
                                             <div class="profile-lang pt-5 border-bottom-1 pb-5">
-                                                <h4 class="text-primary mb-4">Language</h4><a href="javascript:void()"
-                                                    class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i>
-                                                    English</a> <a href="javascript:void()"
-                                                    class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-fr"></i>
-                                                    French</a>
-                                                <a href="javascript:void()" class="text-muted pr-3 f-s-16"><i
-                                                        class="flag-icon flag-icon-bd"></i> Bangla</a>
+                                                <h4 class="text-primary mb-4">Ngôn ngữ</h4>
+                                                <a href="javascript:void()" class="text-muted pr-3 f-s-16">
+                                                    <i class="flag-icon flag-icon-us"></i> Tiếng Anh
+                                                </a>
+                                                <a href="javascript:void()" class="text-muted pr-3 f-s-16">
+                                                    <i class="flag-icon flag-icon-fr"></i> Tiếng Pháp
+                                                </a>
+                                                <a href="javascript:void()" class="text-muted pr-3 f-s-16">
+                                                    <i class="flag-icon flag-icon-bd"></i> Tiếng Bengal
+                                                </a>
                                             </div>
+
                                             <div class="profile-personal-info">
-                                                <h4 class="text-primary mb-4">Personal Information</h4>
+                                                <h4 class="text-primary mb-4">Thông tin cá nhân</h4>
+
                                                 <div class="row mb-4">
                                                     <div class="col-3">
-                                                        <h5 class="f-w-500">Name <span class="pull-right">:</span>
+                                                        <h5 class="f-w-500">Họ và tên <span class="pull-right">:</span>
                                                         </h5>
                                                     </div>
-                                                    <div class="col-9"><span>Mitchell C.Shay</span>
-                                                    </div>
+                                                    <div class="col-9"><span>Mitchell C.Shay</span></div>
                                                 </div>
+
                                                 <div class="row mb-4">
                                                     <div class="col-3">
-                                                        <h5 class="f-w-500">Email <span class="pull-right">:</span>
+                                                        <h5 class="f-w-500">Email <span class="pull-right">:</span></h5>
+                                                    </div>
+                                                    <div class="col-9"><span>example@examplel.com</span></div>
+                                                </div>
+
+                                                <div class="row mb-4">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Khả dụng <span class="pull-right">:</span>
                                                         </h5>
                                                     </div>
-                                                    <div class="col-9"><span>example@examplel.com</span>
-                                                    </div>
+                                                    <div class="col-9"><span>Toàn thời gian (Freelancer)</span></div>
                                                 </div>
+
                                                 <div class="row mb-4">
                                                     <div class="col-3">
-                                                        <h5 class="f-w-500">Availability <span class="pull-right">:</span>
+                                                        <h5 class="f-w-500">Tuổi <span class="pull-right">:</span></h5>
+                                                    </div>
+                                                    <div class="col-9"><span>27</span></div>
+                                                </div>
+
+                                                <div class="row mb-4">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Địa chỉ <span class="pull-right">:</span></h5>
+                                                    </div>
+                                                    <div class="col-9"><span>Rosemont Avenue, Melbourne, Florida</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-4">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Kinh nghiệm <span class="pull-right">:</span>
                                                         </h5>
                                                     </div>
-                                                    <div class="col-9"><span>Full Time (Free Lancer)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <div class="col-3">
-                                                        <h5 class="f-w-500">Age <span class="pull-right">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-9"><span>27</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <div class="col-3">
-                                                        <h5 class="f-w-500">Location <span class="pull-right">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-9"><span>Rosemont Avenue Melbourne,
-                                                            Florida</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <div class="col-3">
-                                                        <h5 class="f-w-500">Year Experience <span
-                                                                class="pull-right">:</span></h5>
-                                                    </div>
-                                                    <div class="col-9"><span>07 Year Experiences</span>
-                                                    </div>
+                                                    <div class="col-9"><span>07 năm kinh nghiệm</span></div>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div id="profile-settings" class="tab-pane fade">
                                             <div class="pt-3">
                                                 <div class="settings-form">
-                                                    <h4 class="text-primary">Account Setting</h4>
+                                                    <h4 class="text-primary">Cài đặt tài khoản</h4>
                                                     <form>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
@@ -352,28 +360,28 @@
                                                                     class="form-control">
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label>Password</label>
-                                                                <input type="password" placeholder="Password"
+                                                                <label>Mật khẩu</label>
+                                                                <input type="password" placeholder="Mật khẩu"
                                                                     class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Address</label>
-                                                            <input type="text" placeholder="1234 Main St"
+                                                            <label>Địa chỉ</label>
+                                                            <input type="text" placeholder="Hà Nội"
                                                                 class="form-control">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Address 2</label>
-                                                            <input type="text"
-                                                                placeholder="Apartment, studio, or floor"
+                                                            <label>Địa chỉ cụ thể</label>
+                                                            <input type="text" placeholder="Cầu Giấy"
                                                                 class="form-control">
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
-                                                                <label>City</label>
-                                                                <input type="text" class="form-control">
+                                                                <label>Thành phố</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Hà Nội">
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            {{-- <div class="form-group col-md-4">
                                                                 <label>State</label>
                                                                 <select class="form-control" id="inputState">
                                                                     <option selected="">Choose...</option>
@@ -385,18 +393,17 @@
                                                             <div class="form-group col-md-2">
                                                                 <label>Zip</label>
                                                                 <input type="text" class="form-control">
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" class="custom-control-input"
                                                                     id="gridCheck">
-                                                                <label class="custom-control-label" for="gridCheck"> Check
-                                                                    me out</label>
+                                                                <label class="custom-control-label" for="gridCheck"> Hãy
+                                                                    xem tôi nhé</label>
                                                             </div>
                                                         </div>
-                                                        <button class="btn btn-primary" type="submit">Sign
-                                                            in</button>
+                                                        <button class="btn btn-primary" type="submit">Cập nhật</button>
                                                     </form>
                                                 </div>
                                             </div>

@@ -21,6 +21,17 @@ class ProfileController extends Controller
     {
         try {
             $data = Student::find(currentUserId());
+
+            // Kiểm tra email đã tồn tại ở student khác chưa
+            $emailExists = Student::where('email', $request->emailAddress)
+                ->where('id', '!=', $data->id) // bỏ qua chính user hiện tại
+                ->exists();
+
+            if ($emailExists) {
+                return redirect()->back()->with('error', 'Email đã được sử dụng ở tài khoản khác!');
+            }
+
+            $data = Student::find(currentUserId());
             $data->name_en = $request->fullName_en;
             $data->contact_en = $request->contactNumber_en;
             $data->email = $request->emailAddress;
@@ -38,11 +49,11 @@ class ProfileController extends Controller
             }
             if ($data->save()) {
                 $this->setSession($data);
-                return redirect()->back()->with('success', 'Your Changes Have been Saved');
+                return redirect()->back()->with('success', 'Đã lưu dữ liệu thành công.');
             }
         } catch (Exception $e) {
             // dd($e);
-            return redirect()->back()->withInput()->with('error', 'Something went wrong. Vui lòng thử lại');
+            return redirect()->back()->withInput()->with('error', ' Vui lòng thử lại');
         }
     }
 

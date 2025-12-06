@@ -52,9 +52,6 @@ class payController extends Controller
             $enrollment->save();
         }
 
-        // Lưu vào bảng tuyển sinh
-
-
         // Gửi mail
         // dd(session());
         $email_student = encryptor('decrypt', session('emailAddress'));
@@ -67,6 +64,10 @@ class payController extends Controller
         // dd($info);
 
         Mail::to($email_student)->send(new SendMail($cart_details['cart'], $info));
+
+        // Xoá giỏ hàng
+        session()->forget('cart');          // Xoá toàn bộ items
+        session()->forget('cart_details');  // Xoá thông tin tổng, thuế, discount
 
         return redirect()->route('register.success');
     }

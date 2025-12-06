@@ -32,7 +32,8 @@
                     <div class="event-search-bar">
                         <form action="{{ route('searchCourse') }}" method="get">
                             <div class="form-input-group">
-                                <input type="text" class="form-control" name="textSearch" placeholder="Tìm kiếm khóa học..." />
+                                <input type="text" class="form-control" name="textSearch"
+                                    placeholder="Tìm kiếm khóa học..." />
                                 <button class="button button-lg button--primary" type="submit" id="button-addon2">
                                     Tìm kiếm
                                 </button>
@@ -64,26 +65,19 @@
                                 <div class="accordion-body">
                                     <form action="{{ route('searchCourse') }}" method="get">
                                         @csrf
-                                        <div class="accordion-body__item">
-                                            <div class="check-box">
-                                                <input type="checkbox" class="checkbox-primary" name="category"
-                                                    value="" {{ !$selectedCategories ? 'checked' : '' }}>
-                                                <label> All </label>
-                                            </div>
-                                            <p class="check-details">
-                                                {{ $allCourse->count() }}
-                                            </p>
-                                        </div>
+
                                         @forelse($category as $cat)
                                             @php
                                                 $courseCount = $cat->course()->where('status', 2)->count();
                                             @endphp
                                             <div class="accordion-body__item">
                                                 <div class="check-box">
-                                                    <input type="checkbox" class="checkbox-primary" name="categories[]"
+                                                    <input type="checkbox" id="checkbo{{ $cat->id }}"
+                                                        class="checkbox-primary" name="categories[]"
                                                         value="{{ $cat->id }}"
                                                         {{ in_array($cat->id, (array) $selectedCategories) ? 'checked' : '' }}>
-                                                    <label> {{ $cat->category_name }} </label>
+                                                    <label for="checkbo{{ $cat->id }}"> {{ $cat->category_name }}
+                                                    </label>
                                                 </div>
                                                 <p class="check-details">
                                                     {{ $courseCount }}
@@ -104,52 +98,61 @@
                                     Mức độ
                                 </button>
                             </h2>
+
                             <div id="levelCollapse" class="accordion-collapse collapse" aria-labelledby="levelAcc"
                                 data-bs-parent="#sidebarFilter">
+
                                 <div class="accordion-body">
-                                    <form action="#">
+                                    <form action="{{ route('searchCourse') }}" method="get">
+                                        @csrf
+
+                                        {{-- Mức độ 1 --}}
                                         <div class="accordion-body__item">
                                             <div class="check-box">
-                                                <input type="checkbox" class="checkbox-primary" />
-                                                <label> Tất cả </label>
+                                                <input type="checkbox" id="level1" class="checkbox-primary"
+                                                    name="levels[]" value="1"
+                                                    {{ in_array(1, (array) $selectedLevels) ? 'checked' : '' }}>
+                                                <label for="level1"> Cơ bản </label>
                                             </div>
                                             <p class="check-details">
-                                                1,54,750
+                                                {{ $levelCounts[1] ?? 0 }}
                                             </p>
                                         </div>
+
+                                        {{-- Mức độ 2 --}}
                                         <div class="accordion-body__item">
                                             <div class="check-box">
-                                                <input type="checkbox" class="checkbox-primary" />
-                                                <label> Trung cấp </label>
+                                                <input type="checkbox" id="level2" class="checkbox-primary"
+                                                    name="levels[]" value="2"
+                                                    {{ in_array(2, (array) $selectedLevels) ? 'checked' : '' }}>
+                                                <label for="level2"> Trung cấp </label>
                                             </div>
                                             <p class="check-details">
-                                                35,790
+                                                {{ $levelCounts[2] ?? 0 }}
                                             </p>
                                         </div>
+
+                                        {{-- Mức độ 3 --}}
                                         <div class="accordion-body__item">
                                             <div class="check-box">
-                                                <input type="checkbox" class="checkbox-primary" />
-                                                <label> Trình độ cao </label>
+                                                <input type="checkbox" id="level3" class="checkbox-primary"
+                                                    name="levels[]" value="3"
+                                                    {{ in_array(3, (array) $selectedLevels) ? 'checked' : '' }}>
+                                                <label for="level3"> Nâng cao </label>
                                             </div>
                                             <p class="check-details">
-                                                5,770
+                                                {{ $levelCounts[3] ?? 0 }}
                                             </p>
                                         </div>
-                                        <div class="accordion-body__item">
-                                            <div class="check-box">
-                                                <input type="checkbox" class="checkbox-primary" />
-                                                <label> Chuyên gia </label>
-                                            </div>
-                                            <p class="check-details">
-                                                765
-                                            </p>
-                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Áp dụng</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Search by Price  -->
-                        <div class="accordion-item">
+                        {{-- <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -187,7 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Search by Rating  -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="ratingAcc">
@@ -260,7 +263,7 @@
                             </div>
                         </div>
                         <!-- Search by Duration  -->
-                        <div class="accordion-item">
+                        {{-- <div class="accordion-item">
                             <h2 class="accordion-header" id="durationAcc">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#durationCollapse" aria-expanded="false"
@@ -320,7 +323,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 

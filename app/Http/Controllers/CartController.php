@@ -28,7 +28,7 @@ class CartController extends Controller
         $cart = session()->get('cart', []); // Lấy cart, nếu chx có thì lấy []
 
         if (isset($cart[$id])) {
-            $message = "Bạn đã thêm khóa học này vào giỏ hàng.";
+            $message = "Khóa học đã có trong giỏ hàng.";
             return redirect()->back()->with('warning', $message);
             //$cart[$id]['quantity']++;
         } else {
