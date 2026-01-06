@@ -48,31 +48,87 @@
 
 <body style="background-color: #ebebf2;">
 
+    <style>
+        .result-header {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            padding: 18px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .result-logo img {
+            height: 42px;
+        }
+
+        .result-info {
+            flex: 1;
+            text-align: center;
+            color: #fff;
+        }
+
+        .result-title {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .result-alert {
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .result-alert i {
+            color: #22c55e;
+        }
+
+        .result-action .button {
+            padding: 10px 18px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+    </style>
     <!-- Title Starts Here -->
-    <header class="bg-transparent">
-        <div class="container-fluid">
-            <div class="coursedescription-header">
-                <div class="coursedescription-header-start">
-                    <a class="logo-image" href="{{ route('home') }}">
-                        <img src="{{ asset('frontend/dist/images/logo/logo.png') }}" alt="Logo" />
-                    </a>
-                    <div style="margin-left:470px; padding: 17px 100px;"
-                        class="alert alert-success d-flex justify-content-center align-items-center mt-3 shadow-sm"
-                        role="alert">
-                        <i class="bi bi-check-circle-fill me-2 fs-4"></i>
-                        <div>
-                            <h5>
-                                Bạn đã nộp bài thành công!</h5>
-                        </div>
+    <header class="result-header">
+        <div class="container">
+            <div class="result-header__inner">
+
+                <!-- Logo -->
+                <a class="result-logo" href="{{ route('home') }}">
+                    <img src="{{ asset('frontend/dist/images/logo/logo.png') }}" alt="Logo">
+                </a>
+
+                <!-- Title + status -->
+                <div class="result-info">
+                    <h4 class="result-title">Kết quả làm bài</h4>
+                    <div class="result-alert">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Bạn đã nộp bài thành công</span>
                     </div>
                 </div>
-                <div class="coursedescription-header-end">
-                    <button class="button button--primary"> Kết quả làm bài
-                    </button>
+
+                <!-- Action -->
+                <div class="result-action">
+                    <a href="#result" class="button button--primary">
+                        Xem kết quả
+                    </a>
                 </div>
+
             </div>
         </div>
     </header>
+
     <div class="container py-4">
         <h3 class="mb-2">{{ $studentTest->quiz->title }}</h3>
         <p>Điểm: <strong style="padding-left: 86px">{{ $studentTest->score }}</strong></p>
@@ -104,20 +160,21 @@
                         <span class="info-label">Đáp án bạn chọn:</span>
                         <span class="info-content">
                             <strong
-                                class="{{ $check ? 'text-success' : 'text-danger' }}">{{ strtoupper($item->selected_answer) }}</strong>
+                                class="{{ $check ? 'text-success' : 'text-danger' }}">{{ strtoupper($item->selected_answer ?? 'Trống') }}</strong>
                             {{ $item->question->{'option_' . $item->selected_answer} }}
                             <i
                                 class="fas {{ $check ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"></i>
                         </span>
                     </div>
-
-                    <div class="info-line">
-                        <span class="info-label">Đáp án đúng:</span>
-                        <span class="info-content">
-                            <strong class="text-success">{{ strtoupper($item->question->correct_answer) }}</strong>
-                            {{ $item->question->{'option_' . $item->question->correct_answer} }}
-                        </span>
-                    </div>
+                    @if (strtoupper($item->question->correct_answer) != strtoupper($item->selected_answer))
+                        <div class="info-line">
+                            <span class="info-label">Đáp án đúng:</span>
+                            <span class="info-content">
+                                <strong class="text-success">{{ strtoupper($item->question->correct_answer) }}</strong>
+                                {{ $item->question->{'option_' . $item->question->correct_answer} }}
+                            </span>
+                        </div>
+                    @endif
 
                     <div class="info-line">
                         <span class="info-label">Giải thích:</span>

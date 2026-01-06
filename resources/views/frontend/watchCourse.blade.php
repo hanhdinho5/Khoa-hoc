@@ -74,7 +74,7 @@
                 <div class="course-description-start">
                     <div class="video-area">
                         <video controls id="myvideo" class="video-js w-100"
-                            poster="{{ asset('frontend/dist/images/courses/vthumb.jpg') }}">
+                            poster="{{ asset('frontend/dist/images/courses/videol.jpg') }}">
                             <source src="" class="w-100" />
                         </video>
                     </div>
@@ -396,6 +396,7 @@
                                     <div class="videolist-area-wizard"
                                         data-lesson-description="{{ $lesson->description }}"
                                         data-lesson-notes="{{ $lesson->notes }}">
+
                                         <div class="wizard-heading"
                                             style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;"
                                             onclick="toggleLesson(this)">
@@ -404,48 +405,86 @@
                                         </div>
 
                                         <div class="lesson-materials" style="display: none; margin-top: 8px;">
-                                            @foreach ($lesson->material as $material)
+
+                                            @php
+                                                $videoMaterials = $lesson->material->where('type', 'video');
+                                                $otherMaterials = $lesson->material->where('type', '!=', 'video');
+                                                $materialIndex = 1;
+                                            @endphp
+
+                                            {{-- VIDEO TRƯỚC --}}
+                                            @foreach ($videoMaterials as $material)
                                                 <div class="main-wizard"
-                                                    data-material-title="{{ $loop->parent->iteration }}.{{ $loop->iteration }} {{ $material->title }}">
+                                                    data-material-title="{{ $loop->parent->iteration }}.{{ $materialIndex }} {{ $material->title }}">
                                                     <div class="main-wizard__wrapper">
-                                                        @if ($material->type == 'video')
-                                                            <a class="main-wizard-start"
-                                                                onclick="show_video('{{ $material->content }}')">
-                                                                <div class="main-wizard-icon">
-                                                                    <i class="far fa-play-circle fa-lg"></i>
-                                                                </div>
-                                                                <div class="main-wizard-title">
-                                                                    <p>{{ $loop->parent->iteration }}.{{ $loop->iteration }}
-                                                                        {{ $material->title }}</p>
-                                                                </div>
-                                                            </a>
-                                                        @elseif($material->type == 'document')
+                                                        <a class="main-wizard-start"
+                                                            onclick="show_video('{{ $material->content }}')">
+                                                            <div class="main-wizard-icon">
+                                                                <i class="far fa-play-circle fa-lg"></i>
+                                                            </div>
+                                                            <div class="main-wizard-title">
+                                                                <p>{{ $loop->parent->iteration }}.{{ $materialIndex }}
+                                                                    {{ $material->title }}</p>
+                                                            </div>
+                                                        </a>
+
+                                                        <div class="main-wizard-end d-flex align-items-center">
+                                                            <span>12:34</span>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    style="border-radius: 0px; margin-left: 5px;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @php $materialIndex++; @endphp
+                                            @endforeach
+
+                                            {{-- FILE KHÁC (document, pdf, ...) --}}
+                                            @foreach ($otherMaterials as $material)
+                                                <div class="main-wizard"
+                                                    data-material-title="{{ $loop->parent->iteration }}.{{ $materialIndex }} {{ $material->title }}">
+                                                    <div class="main-wizard__wrapper">
+
+                                                        @if ($material->type == 'document')
                                                             <a class="main-wizard-start"
                                                                 onclick="open_file('{{ $material->content }}')">
                                                                 <div class="main-wizard-icon">
                                                                     <i class="fas fa-book fa-lg text-success"></i>
                                                                 </div>
                                                                 <div class="main-wizard-title">
-                                                                    <p>{{ $loop->parent->iteration }}.{{ $loop->iteration }}
+                                                                    <p>{{ $loop->parent->iteration }}.{{ $materialIndex }}
+                                                                        {{ $material->title }}</p>
+                                                                </div>
+                                                            </a>
+                                                        @else
+                                                            <a class="main-wizard-start">
+                                                                <div class="main-wizard-icon">
+                                                                    <i class="fas fa-file fa-lg"></i>
+                                                                </div>
+                                                                <div class="main-wizard-title">
+                                                                    <p>{{ $loop->parent->iteration }}.{{ $materialIndex }}
                                                                         {{ $material->title }}</p>
                                                                 </div>
                                                             </a>
                                                         @endif
 
                                                         <div class="main-wizard-end d-flex align-items-center">
-                                                            <span>12:34</span>
+                                                            <span>--:--</span>
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                    value=""
                                                                     style="border-radius: 0px; margin-left: 5px;" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @php $materialIndex++; @endphp
                                             @endforeach
+
                                         </div>
                                     </div>
                                 @endforeach
+
                             </div>
                         </div>
 
@@ -502,7 +541,7 @@
                                                     <span class="text-success">Điểm:
                                                         {{ $sTest->score }}/10</span>
                                                     <span
-                                                        class="text-muted small ms-2">({{ $sTest->created_at->format('d/m/Y H:i') }})</span>
+                                                        class="text-muted small ms-2">({{ $sTest->created_at->format('d/m/Y') }})</span>
                                                 </a>
                                             @endif
                                         @endforeach

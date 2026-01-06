@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Course Material List')
+@section('title', 'Danh sách tài liệu')
 
 @push('styles')
     <!-- Datatable -->
@@ -15,14 +15,13 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>Course Material List</h4>
+                        <h4>Danh sách tài liệu</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('material.index') }}">Course Materials</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('material.index') }}">All Course Material</a>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('material.index') }}">Tất cả tài liệu</a>
                         </li>
                     </ol>
                 </div>
@@ -32,10 +31,8 @@
                 <div class="col-lg-12">
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                                class="nav-link btn-primary mr-1 show active">List View</a></li>
-                        <li class="nav-item"><a href="javascript:void(0);" data-toggle="tab"
-                                class="nav-link btn-primary">Grid
-                                View</a></li>
+                                class="nav-link btn-primary mr-1 show active">Danh sách</a></li>
+
                     </ul>
                 </div>
                 <div class="col-lg-12">
@@ -43,8 +40,8 @@
                         <div id="list-view" class="tab-pane fade active show col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Course Materials List </h4>
-                                    <a href="{{ route('material.create') }}" class="btn btn-primary">+ Add new</a>
+                                    <h4 class="card-title">Tất cả tài liệu</h4>
+                                    <a href="{{ route('material.create') }}" class="btn btn-primary">+ Thêm tài liệu</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -52,12 +49,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>{{ __('#') }}</th>
-                                                    <th>{{ __('Title') }}</th>
-                                                    <th>{{ __('Lesson') }}</th>
-                                                    <th>{{ __('Material Type') }}</th>
-                                                    <th>{{ __('Content') }}</th>
-                                                    <th>{{ __('Content Url') }}</th>
-                                                    <th>{{ __('Action') }}</th>
+                                                    <th>Tên tài liệu</th>
+                                                    <th>Bài học</th>
+                                                    <th>Loại</th>
+                                                    <th>Nội dung</th>
+                                                    <th>Đường dẫn</th>
+                                                    <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -67,12 +64,29 @@
                                                         <td>{{ $m->title }}</td>
                                                         <td>{{ $m->lesson?->title }}</td>
                                                         <td>
-                                                            {{ $m->type == 'video' ? __('Video') : ($m->type == 'document' ? __('Document') : __('Quiz')) }}
+                                                            {{ $m->type == 'video' ? __('Video') : ($m->type == 'document' ? __('Tài liệu') : __('Quiz')) }}
                                                         </td>
+                                                        @php
+                                                            $ext = strtolower(
+                                                                pathinfo($m->content, PATHINFO_EXTENSION),
+                                                            );
+                                                            $isVideo = in_array($ext, ['mp4', 'webm', 'ogg']);
+                                                        @endphp
+
                                                         <td>
-                                                            <embed
-                                                                src="{{ asset('uploads/courses/contents/' . $m->content) }}"
-                                                                width="200px" height="100px" />
+                                                            @if ($isVideo)
+                                                                <video width="200" height="100" controls
+                                                                    preload="metadata">
+                                                                    <source
+                                                                        src="{{ asset('uploads/courses/contents/' . $m->content) }}"
+                                                                        type="video/{{ $ext }}">
+                                                                    Trình duyệt không hỗ trợ video
+                                                                </video>
+                                                            @else
+                                                                <embed
+                                                                    src="{{ asset('uploads/courses/contents/' . $m->content) }}"
+                                                                    width="200" height="100" />
+                                                            @endif
                                                         </td>
                                                         <td>{{ $m->content_url }}</td>
                                                         <td>

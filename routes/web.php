@@ -81,7 +81,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
     Route::resource('message', message::class);
     Route::resource('coupon', coupon::class);
     Route::resource('enrollment', enrollment::class);
-    // Route::post('/admin/activate-course/{id}', [enrollment::class, 'activate'])->name('admin.activate-course'); // duyệt khi học viên thanh toán
+    Route::post('/admin/activate-course/{id}', [enrollment::class, 'activate'])->name('admin.activate-course'); // duyệt khi học viên thanh toán
     Route::post('/activate-course/{id}', [enrollment::class, 'activate'])
         ->name('enrollment.activate');
 
@@ -98,6 +98,7 @@ Route::post('/student/login/{back_route}', [sauth::class, 'signInCheck'])->name(
 Route::get('/student/logout', [sauth::class, 'signOut'])->name('studentlogOut');
 
 Route::middleware(['checkstudent'])->prefix('students')->group(function () {
+    Route::get('/watchCourse/{id}', [watchCourse::class, 'watchCourse'])->name('watchCourse');
     Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard');
     Route::get('/profile', [stu_profile::class, 'index'])->name('student_profile');
     Route::post('/profile/save', [stu_profile::class, 'save_profile'])->name('student_save_profile');
@@ -113,7 +114,6 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('searchCourse');
 Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDetails');
-Route::get('watchCourse/{id}', [watchCourse::class, 'watchCourse'])->name('watchCourse');
 Route::get('instructorProfile/{id}', [instructor::class, 'frontShow'])->name('instructorProfile');
 Route::get('checkout', [checkout::class, 'index'])->name('checkout');
 Route::post('checkout', [checkout::class, 'store'])->name('checkout.store');

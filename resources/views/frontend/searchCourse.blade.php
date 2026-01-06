@@ -399,9 +399,9 @@
                                                 <span>
                                                     {{ $c->price == null || $c->price == 0 ? 'Free' : number_format($c->price, 0, ',', '.') . ' VNĐ' }}
                                                 </span>
-                                                <del>
+                                                {{-- <del>
                                                     {{ $c->old_price ? number_format($c->old_price, 0, ',', '.') . ' VNĐ' : '' }}
-                                                </del>
+                                                </del> --}}
                                             </div>
                                         </div>
                                         <div class="contentCard-more">

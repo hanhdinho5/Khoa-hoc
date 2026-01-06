@@ -24,33 +24,119 @@
 
 <body style="background-color: #ebebf2;">
 
-    <!-- Title Starts Here -->
-    <header class="bg-transparent">
-        <div class="container-fluid">
-            <div class="coursedescription-header">
-                <div class="coursedescription-header-start">
-                    <a class="logo-image" href="{{ route('home') }}">
-                        <img src="{{ asset('frontend/dist/images/logo/logo.png') }}" alt="Logo" />
-                    </a>
-                    <div class="topic-info">
-                        <div class="topic-info-arrow">
-                            Lưu ý: Không thoát ra ngoài khi đang làm bài
-                        </div>
+    <style>
+        .quiz-header {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            padding: 16px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
 
+        .quiz-header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .quiz-logo img {
+            height: 42px;
+        }
+
+        .quiz-info {
+            flex: 1;
+            text-align: center;
+            color: #fff;
+        }
+
+        .quiz-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .quiz-warning {
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .quiz-warning i {
+            color: #fde047;
+        }
+
+        .quiz-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+    <!-- Title Starts Here -->
+    <header class="quiz-header">
+        <div class="container">
+            <div class="quiz-header__inner">
+
+                <!-- Logo -->
+                <a class="quiz-logo" href="{{ route('home') }}">
+                    <img src="{{ asset('frontend/dist/images/logo/logo.png') }}" alt="Logo">
+                </a>
+
+                <!-- Quiz info -->
+                <div class="quiz-info">
+                    <h4 class="quiz-title">{{ $quiz->title }}</h4>
+                    <div class="quiz-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Không thoát ra ngoài khi đang làm bài</span>
                     </div>
                 </div>
-                <div class="coursedescription-header-end">
 
-
-                    <button class="button button--primary"> {{ $quiz->title }}
-                    </button>
+                <!-- Status -->
+                <div class="quiz-status">
+                    <span class="status-dot"></span>
+                    <span>Đang làm bài</span>
                 </div>
+
             </div>
         </div>
     </header>
+
     <div class="container py-4">
         <h2 class="mb-3">{{ $quiz->name }}</h2>
-        <p>Thời gian làm bài: <strong id="timer">{{ $quiz->test_time }}</strong> phút</p>
+        <p class="mb-3">Thời gian làm bài: <strong id="timer">{{ $quiz->test_time }}</strong> phút</p>
         <form action="{{ route('test.submit', $quiz->id) }}" method="POST" id="quizForm">
             @csrf
             <input type="hidden" name="student_test_id" value="{{ $studentTest->id }}">

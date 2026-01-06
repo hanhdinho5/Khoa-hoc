@@ -104,8 +104,7 @@
                     <div class="course-overview">
                         <!-- Thumbnails -->
                         <div class="course-overview-image">
-                            <img src="{{ asset('uploads/courses/thumbnails/' . $course->thumbnail_image) }}"
-                                alt="img" />
+                            <img src="{{ asset('uploads/courses/' . $course->image) }}" alt="img" />
                             <a class="popup-video play-button" href="{{ $course->thumbnail_video }}">
                                 <svg width="23" height="27" viewBox="0 0 23 27" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -602,7 +601,7 @@
                                                         {{ $course->instructor?->designation
                                                             ? $course->instructor?->designation
                                                             : 'No
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            Designation' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Designation' }}
                                                     </p>
                                                     <div class="d-flex align-items-center instructor-text-bottom">
                                                         <div class="d-flex align-items-center ratings-icon">
@@ -2621,7 +2620,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <h2 class="font-title--md text-center">Related Course</h2>
+                    <h2 class="font-title--md text-center">Khoá học liên quan</h2>
                 </div>
                 <div class="row">
                     <div class="col-12 position-relative px-0 mx-0">
@@ -2634,19 +2633,18 @@
                                 </div>
                                 <div class="contentCard-bottom">
                                     <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
+                                        <a href="#" class="font-title--card">General English Fluency</a>
                                     </h5>
                                     <div class="contentCard-info d-flex align-items-center justify-content-between">
                                         <a href="instructor-profile.html"
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{ asset('frontend/dist/images/courses/7.png') }}"
                                                 alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
+                                            <p class="font-para--md">Nguyển Ánh Nhung</p>
                                         </a>
                                         <div class="price">
-                                            <span>৳12</span>
-                                            <del>৳95</del>
+                                            <span>350.000 VNĐ</span>
+                                            {{-- <del>৳95</del> --}}
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -2689,19 +2687,17 @@
                                 </div>
                                 <div class="contentCard-bottom">
                                     <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
+                                        <a href="#" class="font-title--card">General English Communicator</a>
                                     </h5>
                                     <div class="contentCard-info d-flex align-items-center justify-content-between">
                                         <a href="instructor-profile.html"
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{ asset('frontend/dist/images/courses/7.png') }}"
                                                 alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
+                                            <p class="font-para--md">Đoàn Thanh Trí</p>
                                         </a>
                                         <div class="price">
-                                            <span>৳12</span>
-                                            <del>৳95</del>
+                                            <span>280.000 VNĐ</span>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -2744,19 +2740,17 @@
                                 </div>
                                 <div class="contentCard-bottom">
                                     <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
+                                        <a href="#" class="font-title--card">IELTS Intensive</a>
                                     </h5>
                                     <div class="contentCard-info d-flex align-items-center justify-content-between">
                                         <a href="instructor-profile.html"
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{ asset('frontend/dist/images/courses/7.png') }}"
                                                 alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
+                                            <p class="font-para--md">Ngọc Khánh</p>
                                         </a>
                                         <div class="price">
-                                            <span>৳12</span>
-                                            <del>৳95</del>
+                                            <span>150.000 VNĐ</span>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -2799,19 +2793,17 @@
                                 </div>
                                 <div class="contentCard-bottom">
                                     <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
+                                        <a href="#" class="font-title--card">IELTS Mastery</a>
                                     </h5>
                                     <div class="contentCard-info d-flex align-items-center justify-content-between">
                                         <a href="instructor-profile.html"
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{ asset('frontend/dist/images/courses/7.png') }}"
                                                 alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
+                                            <p class="font-para--md">Nguyễn Anh Tú</p>
                                         </a>
                                         <div class="price">
-                                            <span>৳12</span>
-                                            <del>৳95</del>
+                                            <span>400.000 VNĐ</span>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">

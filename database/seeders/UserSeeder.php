@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
             [
                 'name_en' => 'SuperAdmin One',
                 'name_bn' => null,
-                'email' => 'superadmin1@test.com',
+                'email' => 'superadmin@test.com',
                 'contact_en' => '0901000001',
                 'contact_bn' => null,
                 'role_id' => 1,
