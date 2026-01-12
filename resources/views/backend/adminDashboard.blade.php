@@ -16,7 +16,7 @@
                 <div class="col-xl-3 col-xxl-3 col-sm-6">
                     <div class="widget-stat card bg-primary overflow-hidden">
                         <div class="card-header">
-                            <h3 class="card-title text-white">Tổng học viên</h3>
+                            <h3 class="card-title text-white">Tổng học viên1</h3>
                             <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 422</h5>
                         </div>
                         <div class="card-body text-center mt-3">

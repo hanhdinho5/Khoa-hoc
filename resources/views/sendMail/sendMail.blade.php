@@ -65,7 +65,7 @@
             <ul style="margin: 10px 0 0 20px; padding: 0; font-size: 15px;">
                 <li><strong>Ngân hàng:</strong> MB Bank</li>
                 <li><strong>Số tài khoản:</strong> 01622147641176</li>
-                <li><strong>Chủ tài khoản:</strong> LIONE MESSI</li>
+                <li><strong>Chủ tài khoản:</strong> LU A HANH</li>
             </ul>
             <p style="margin-top: 10px; font-style: italic; color: #666;">
                 Sau khi thanh toán, các khóa học của bạn sẽ được kích hoạt trong thời gian sớm nhất.

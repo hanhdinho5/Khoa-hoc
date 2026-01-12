@@ -80,7 +80,7 @@
                             <a class="nav-link" href="{{ route('contact') }}">Liên hệ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard') }}">Admin</a>
+                            <a class="nav-link" href="/register">Đăng ký giảng viên</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-between rightContent">

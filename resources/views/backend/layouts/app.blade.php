@@ -206,17 +206,27 @@
                             </a>
                         </li>
                         <li class="nav-label">Menu chính</li>
-                        <li><a class="" href="{{ route('role.index') }}" aria-expanded="false">
-                                <i class="las la-cog"></i>
-                                <span class="nav-text">Nhóm quyền</span>
-                            </a>
-                        </li>
+                        {{-- @php dd (checkAuth()) @endphp --}}
+                        @if (!isInstructor())
+                            <li><a class="" href="{{ route('role.index') }}" aria-expanded="false">
+                                    <i class="las la-cog"></i>
+                                    <span class="nav-text">Nhóm quyền</span>
+                                </a>
+                            </li>
+                        @endif
+
+
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                                 <i class="la la-universal-access"></i>
                                 <span class="nav-text">Vai trò</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a href="{{ route('user.index') }}"><i class="la la-users"></i>Nhân sự</a></li>
+                                @if (!isInstructor())
+                                    <li><a href="{{ route('user.index') }}"><i class="la la-users"></i>Nhân
+                                            viên</a>
+                                    </li>
+                                @endif
+
                                 <li><a href="{{ route('instructor.index') }}"><i
                                             class="las la-chalkboard-teacher"></i>Giảng viên</a>
                                 </li>
@@ -232,7 +242,8 @@
                                 <li><a href="{{ route('courseCategory.index') }}"><i class="la la-list"></i>Danh
                                         mục</a>
                                 </li>
-                                <li><a href="{{ route('courseList') }}"><i class="las la-school"></i>Danh sách</a>
+                                <li><a href="{{ route('courseList') }}"><i class="las la-school"></i>Danh
+                                        sách</a>
                                 </li>
 
                                 <li><a href="{{ route('lesson.index') }}"><i class="las la-chalkboard"></i>Bài

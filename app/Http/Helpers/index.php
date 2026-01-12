@@ -2,6 +2,9 @@
 
 //Two way encryption method to encrypt sll data from url
 
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
+
 function encryptor($action, $string)
 {
     $output = false;
@@ -41,4 +44,11 @@ function fullAccess()
 function currentUser()
 {
     return encryptor('decrypt', request()->session()->get('roleIdentity'));
+}
+
+if (!function_exists('isInstructor')) {
+    function isInstructor(): bool
+    {
+        return Session::get('instructorId') != null;
+    }
 }

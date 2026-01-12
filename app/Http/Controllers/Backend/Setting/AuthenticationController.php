@@ -81,6 +81,7 @@ class AuthenticationController extends Controller
                 'roleIdentitiy' => encryptor('encrypt', $user->role?->identity),
                 'image' => $user->image ?? null,
                 'instructorImage' => $user?->instructor->image ?? 'Không thấy người hướng dẫn',
+                'instructorId' => $user->instructor_id ?? null,
             ]
         );
     }
