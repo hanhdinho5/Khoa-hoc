@@ -190,86 +190,91 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        @if (fullAccess())
-            <div class="dlabnav">
-                <div class="dlabnav-scroll">
-                    <ul class="metismenu" id="menu">
-                        <li class="nav-label first">Quản trị viên</li>
-                        <li><a class="ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
-                                <i class="las la-tachometer-alt"></i>
-                                <span class="nav-text">Dashboard</span>
+        <div class="dlabnav">
+            <div class="dlabnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Quản trị viên</li>
+                    <li><a class="ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
+                            <i class="las la-tachometer-alt"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li><a class="ai-icon" href="{{ route('home') }}" aria-expanded="false">
+                            <i class="las la-home"></i>
+                            <span class="nav-text">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="nav-label">Menu chính</li>
+                    {{-- @php dd (checkAuth()) @endphp --}}
+                    @if (!isInstructor())
+                        <li><a class="" href="{{ route('role.index') }}" aria-expanded="false">
+                                <i class="las la-cog"></i>
+                                <span class="nav-text">Nhóm quyền</span>
                             </a>
                         </li>
-                        <li><a class="ai-icon" href="{{ route('home') }}" aria-expanded="false">
-                                <i class="las la-home"></i>
-                                <span class="nav-text">Trang chủ</span>
-                            </a>
-                        </li>
-                        <li class="nav-label">Menu chính</li>
-                        {{-- @php dd (checkAuth()) @endphp --}}
-                        @if (!isInstructor())
-                            <li><a class="" href="{{ route('role.index') }}" aria-expanded="false">
-                                    <i class="las la-cog"></i>
-                                    <span class="nav-text">Nhóm quyền</span>
-                                </a>
+                    @endif
+
+
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="la la-universal-access"></i>
+                            <span class="nav-text">Vai trò</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            @if (!isInstructor())
+                                <li><a href="{{ route('user.index') }}"><i class="la la-users"></i>Nhân
+                                        viên</a>
+                                </li>
+                            @endif
+
+                            <li><a href="{{ route('instructor.index') }}"><i
+                                        class="las la-chalkboard-teacher"></i>Giảng viên</a>
                             </li>
-                        @endif
-
-
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="la la-universal-access"></i>
-                                <span class="nav-text">Vai trò</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                @if (!isInstructor())
-                                    <li><a href="{{ route('user.index') }}"><i class="la la-users"></i>Nhân
-                                            viên</a>
-                                    </li>
-                                @endif
-
-                                <li><a href="{{ route('instructor.index') }}"><i
-                                            class="las la-chalkboard-teacher"></i>Giảng viên</a>
-                                </li>
-                                <li><a href="{{ route('student.index') }}"><i class="las la-book-reader"></i>Học
-                                        viên</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="las la-school"></i>
-                                <span class="nav-text">Khóa học</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="{{ route('courseCategory.index') }}"><i class="la la-list"></i>Danh
-                                        mục</a>
-                                </li>
+                            <li><a href="{{ route('student.index') }}"><i class="las la-book-reader"></i>Học
+                                    viên</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="las la-school"></i>
+                            <span class="nav-text">Khóa học</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('courseCategory.index') }}"><i class="la la-list"></i>Danh
+                                    mục</a>
+                            </li>
+                            @if (!isInstructor())
                                 <li><a href="{{ route('courseList') }}"><i class="las la-school"></i>Danh
                                         sách</a>
                                 </li>
+                            @else
+                                <li><a href="{{ route('my.courseList') }}"><i class="las la-school"></i>Khoá học của
+                                        tôi</a>
+                                </li>
+                            @endif
 
-                                <li><a href="{{ route('lesson.index') }}"><i class="las la-chalkboard"></i>Bài
-                                        học</a></li>
-                                <li><a href="{{ route('material.index') }}"><i class="las la-atom"></i></i>Tài
-                                        liệu</a></li>
-                                <li><a href="{{ route('quiz.index') }}"><i class="las la-book-open"></i>Bài kiểm
-                                        tra</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="" href="{{ route('enrollment.index') }}" aria-expanded="false">
-                                <i class="las la-bullseye"></i>
-                                <span class="nav-text">Tuyển sinh</span>
-                            </a>
-                        </li>
-                        <li><a class="" href="{{ route('event.index') }}" aria-expanded="false">
-                                <i class="las la-icons"></i>
-                                <span class="nav-text">Sự kiện</span>
-                            </a>
-                        </li>
-                        <li><a class="" href="{{ route('coupon.index') }}" aria-expanded="false">
-                                <i class="las la-tags"></i>
-                                <span class="nav-text">Giảm giá</span>
-                            </a>
-                        </li>
-                        {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <li><a href="{{ route('lesson.index') }}"><i class="las la-chalkboard"></i>Bài
+                                    học</a></li>
+                            <li><a href="{{ route('material.index') }}"><i class="las la-atom"></i></i>Tài
+                                    liệu</a></li>
+                            <li><a href="{{ route('quiz.index') }}"><i class="las la-book-open"></i>Bài kiểm
+                                    tra</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="" href="{{ route('enrollment.index') }}" aria-expanded="false">
+                            <i class="las la-bullseye"></i>
+                            <span class="nav-text">Tuyển sinh</span>
+                        </a>
+                    </li>
+                    <li><a class="" href="{{ route('event.index') }}" aria-expanded="false">
+                            <i class="las la-icons"></i>
+                            <span class="nav-text">Sự kiện</span>
+                        </a>
+                    </li>
+                    <li><a class="" href="{{ route('coupon.index') }}" aria-expanded="false">
+                            <i class="las la-tags"></i>
+                            <span class="nav-text">Giảm giá</span>
+                        </a>
+                    </li>
+                    {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="las la-tasks"></i>
                             <span class="nav-text">Quizzes</span>
                         </a>
@@ -309,44 +314,10 @@
                             <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>Coupons</a></li>
                         </ul>
                     </li> --}}
-                    </ul>
-                </div>
+                </ul>
             </div>
-        @endif
+        </div>
 
-        @if (!fullAccess())
-            <div class="dlabnav">
-                <div class="dlabnav-scroll">
-                    <ul class="metismenu" id="menu">
-                        <li class="nav-label first">Instructor Panel</li>
-                        <li><a class="ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
-                                <i class="las la-tachometer-alt"></i> <span class="nav-text">Dashboard</span>
-                            </a>
-                        </li>
-                        <li><a class="ai-icon" href="{{ route('home') }}" aria-expanded="false">
-                                <i class="las la-home"></i><span class="nav-text">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-label">Menu chính</li>
-                        <li><a href="{{ route('instructor.index') }}">
-                                <i class="las la-chalkboard-teacher"></i>Instructors List
-                            </a>
-                        </li>
-                        <li><a href="{{ route('student.index') }}"><i class="las la-book-reader"></i>Students
-                                List</a></li>
-                        <li><a href="{{ route('course.index') }}"><i class="las la-book-open"></i>All Courses</a>
-                        </li>
-                        <li><a href="{{ route('lesson.index') }}"><i class="las la-chalkboard"></i>Course Lessons</a>
-                        </li>
-                        <li><a href="{{ route('material.index') }}"><i class="las la-atom"></i></i>Course
-                                Materials</a></li>
-                        <li><a href="{{ route('coupon.index') }}"><i class="las la-tags"></i>Coupons</a></li>
-                        <li><a href="{{ route('enrollment.index') }}"><i class="las la-bullseye"></i>Enrollments</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        @endif
         <!--**********************************
             Sidebar end
         ***********************************-->

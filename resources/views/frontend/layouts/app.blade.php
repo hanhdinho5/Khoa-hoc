@@ -138,7 +138,7 @@
                             </div>
                         @else
                             <a href="{{ route('studentLogin') }}" class="button button--text">Đăng nhập</a>
-                            <a href="{{ route('studentRegister') }}" class="button button--dark">Đang ký</a>
+                            <a href="{{ route('studentRegister') }}" class="button button--dark">Đăng ký</a>
                         @endif
                     </div>
                 </div>

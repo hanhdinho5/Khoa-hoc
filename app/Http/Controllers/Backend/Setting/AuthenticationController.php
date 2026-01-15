@@ -27,6 +27,7 @@ class AuthenticationController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->role_id = 3;
+            // $user->instructor_id = ;
             // dd($request->all());
             if ($user->save())
                 return redirect('login')->with('success', 'Tạo tài khoản thành công');

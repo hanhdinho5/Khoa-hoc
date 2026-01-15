@@ -16,8 +16,8 @@
                 <div class="col-xl-3 col-xxl-3 col-sm-6">
                     <div class="widget-stat card bg-primary overflow-hidden">
                         <div class="card-header">
-                            <h3 class="card-title text-white">Tổng học viên1</h3>
-                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 422</h5>
+                            <h3 class="card-title text-white">Tổng học viên</h3>
+                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> {{ $totalStudents }}</h5>
                         </div>
                         <div class="card-body text-center mt-3">
                             <div class="ico-sparkline">
@@ -30,7 +30,7 @@
                     <div class="widget-stat card bg-success overflow-hidden">
                         <div class="card-header">
                             <h3 class="card-title text-white">Học viên mới</h3>
-                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 357</h5>
+                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> {{ $totalEnrollments }}</h5>
                         </div>
                         <div class="card-body text-center mt-4 p-0">
                             <div class="ico-sparkline">
@@ -43,7 +43,7 @@
                     <div class="widget-stat card bg-secondary overflow-hidden">
                         <div class="card-header pb-3">
                             <h3 class="card-title text-white">Tổng khoá học</h3>
-                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 547</h5>
+                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> {{ $totalCourses }}</h5>
                         </div>
                         <div class="card-body p-0 mt-2">
                             <div class="px-4"><span class="bar1"
@@ -56,7 +56,8 @@
                     <div class="widget-stat card bg-danger overflow-hidden">
                         <div class="card-header pb-3">
                             <h3 class="card-title text-white">Thu phí</h3>
-                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i>746.000.000 VNĐ </h5>
+                            <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i>
+                                {{ number_format($totalTuitionFee, 0, ',', '.') }} VNĐ </h5>
                         </div>
                         <div class="card-body p-0 mt-1">
                             <span class="peity-line-2" data-width="100%">7,6,8,7,3,8,3,3,6,5,9,2,8</span>
@@ -87,7 +88,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Danh sách học viên mới</h4>
+                            <h4 class="card-title">Danh sách tuyển sinh mới</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -102,31 +103,44 @@
                                         </tr>
                                     </thead>
                                     <tbody id="customers">
-                                        <tr class="btn-reveal-trigger">
-                                            <td class="p-3">
-                                                <a href="javascript:void(0);">
-                                                    <div class="media d-flex align-items-center">
-                                                        <div class="avatar avatar-xl mr-2">
-                                                            <img class="rounded-circle img-fluid"
-                                                                src="{{ asset('images/avatar/5.png') }}" width="30"
-                                                                alt="">
+                                        @forelse ($enrollments as $enrollment)
+                                            <tr class="btn-reveal-trigger">
+                                                <td class="p-3">
+                                                    <a href="javascript:void(0);">
+                                                        <div class="media d-flex align-items-center">
+                                                            <div class="avatar avatar-xl mr-2">
+                                                                <img class="rounded-circle img-fluid"
+                                                                    src="{{ asset('images/avatar/5.png') }}" width="30"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h5 class="mb-0 fs--1">{{ $enrollment->student?->name_en }}
+                                                                </h5>
+                                                            </div>
                                                         </div>
-                                                        <div class="media-body">
-                                                            <h5 class="mb-0 fs--1">Nguyễn Minh Quân</h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="py-2">Trần Thị Hoa</td>
-                                            <td><span class="badge badge-rounded badge-primary">Hoàn thành</span></td>
-                                            <td class="py-2">30/03/2018</td>
-                                            <td>
-                                                <a href="edit-student.html" class="btn btn-sm btn-primary"><i
-                                                        class="la la-pencil"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
-                                                        class="la la-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                                    </a>
+                                                </td>
+                                                <td class="py-2">{{ $enrollment->course?->instructor?->name_en }}</td>
+                                                <td>
+                                                    @if ($enrollment->status == '1')
+                                                        <span class="badge badge-rounded badge-success">Đã duyệt</span>
+                                                    @else
+                                                        <span class="badge badge-rounded badge-warning">Chờ duyệt</span>
+                                                    @endif
+                                                </td>
+                                                <td class="py-2">{{ $enrollment->created_at->format('d/m/Y') }}</td>
+                                                <td>
+                                                    <a href="edit-student.html" class="btn btn-sm btn-primary"><i
+                                                            class="la la-pencil"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
+                                                            class="la la-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5">Không có học viên mới nào</td>
+                                            </tr>
+                                        @endforelse
                                         <tr class="btn-reveal-trigger">
                                             <td class="p-3">
                                                 <a href="javascript:void(0);">
@@ -143,7 +157,7 @@
                                                 </a>
                                             </td>
                                             <td class="py-2">Nguyễn Văn Hùng</td>
-                                            <td><span class="badge badge-rounded badge-warning">Đang chờ</span></td>
+                                            <td><span class="badge badge-rounded badge-warning">Chờ duyệt</span></td>
                                             <td class="py-2">11/07/2017</td>
                                             <td>
                                                 <a href="edit-student.html" class="btn btn-sm btn-primary"><i
@@ -168,7 +182,7 @@
                                                 </a>
                                             </td>
                                             <td class="py-2">Vũ Thị Mai</td>
-                                            <td><span class="badge badge-rounded badge-primary">Hoàn thành</span></td>
+                                            <td><span class="badge badge-rounded badge-success">Đã duyệt</span></td>
                                             <td class="py-2">05/04/2016</td>
                                             <td>
                                                 <a href="edit-student.html" class="btn btn-sm btn-primary"><i
@@ -193,7 +207,7 @@
                                                 </a>
                                             </td>
                                             <td class="py-2">Trần Văn Lâm</td>
-                                            <td><span class="badge badge-rounded badge-danger">Tạm dừng</span></td>
+                                            <td><span class="badge badge-rounded badge-success">Đã duyệt</span></td>
                                             <td class="py-2">05/04/2018</td>
                                             <td>
                                                 <a href="edit-student.html" class="btn btn-sm btn-primary"><i
@@ -218,7 +232,7 @@
                                                 </a>
                                             </td>
                                             <td class="py-2">Lê Minh Đức</td>
-                                            <td><span class="badge badge-rounded badge-warning">Đang chờ</span></td>
+                                            <td><span class="badge badge-rounded badge-warning">Chờ duyệt</span></td>
                                             <td class="py-2">17/03/2016</td>
                                             <td>
                                                 <a href="edit-student.html" class="btn btn-sm btn-primary"><i
@@ -227,56 +241,7 @@
                                                         class="la la-trash-o"></i></a>
                                             </td>
                                         </tr>
-                                        <tr class="btn-reveal-trigger">
-                                            <td class="p-3">
-                                                <a href="javascript:void(0);">
-                                                    <div class="media d-flex align-items-center">
-                                                        <div class="avatar avatar-xl mr-2">
-                                                            <img class="rounded-circle img-fluid"
-                                                                src="{{ asset('images/avatar/5.png') }}" width="30"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5 class="mb-0 fs--1">Ngô Văn Khánh</h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="py-2">Phạm Thị Hương</td>
-                                            <td><span class="badge badge-rounded badge-danger">Tạm dừng</span></td>
-                                            <td class="py-2">12/07/2014</td>
-                                            <td>
-                                                <a href="edit-student.html" class="btn btn-sm btn-primary"><i
-                                                        class="la la-pencil"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
-                                                        class="la la-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr class="btn-reveal-trigger">
-                                            <td class="p-3">
-                                                <a href="javascript:void(0);">
-                                                    <div class="media d-flex align-items-center">
-                                                        <div class="avatar avatar-xl mr-2">
-                                                            <img class="rounded-circle img-fluid"
-                                                                src="{{ asset('images/avatar/1.png') }}" alt=""
-                                                                width="30">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5 class="mb-0 fs--1">Bùi Quốc Anh</h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="py-2">Vũ Hồng Nhung</td>
-                                            <td><span class="badge badge-rounded badge-warning">Đang chờ</span></td>
-                                            <td class="py-2">15/06/2014</td>
-                                            <td>
-                                                <a href="edit-student.html" class="btn btn-sm btn-primary"><i
-                                                        class="la la-pencil"></i></a>
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-danger"><i
-                                                        class="la la-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
                                 </table>
 

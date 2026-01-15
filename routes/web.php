@@ -58,13 +58,16 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function () {
     Route::get('userProfile', [auth::class, 'show'])->name('userProfile');
 });
 
+Route::get('admin/My-courseList', [course::class, 'indexForAdmin'])->name('my.courseList');
+Route::resource('admin/course', course::class);
+
+
 Route::middleware(['checkrole'])->prefix('admin')->group(function () {
     Route::resource('user', user::class);
     Route::resource('role', role::class);
     Route::resource('student', student::class);
     Route::resource('instructor', instructor::class);
     Route::resource('courseCategory', courseCategory::class);
-    Route::resource('course', course::class);
     Route::get('/courseList', [course::class, 'indexForAdmin'])->name('courseList');
     Route::patch('/courseList/{update}', [course::class, 'updateforAdmin'])->name('course.updateforAdmin');
     Route::resource('material', material::class);

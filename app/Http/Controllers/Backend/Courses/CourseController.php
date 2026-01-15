@@ -14,6 +14,7 @@ use App\Models\Lesson;
 use App\Models\Material;
 use Exception;
 use File;
+use Illuminate\Support\Facades\Session;
 
 class CourseController extends Controller
 {
@@ -28,7 +29,12 @@ class CourseController extends Controller
 
     public function indexForAdmin()
     {
-        $course = Course::paginate(10);
+        $idInstructor = Session::get('instructorId');
+
+        $course = Course::when($idInstructor, function ($query) use ($idInstructor) {
+            $query->where('instructor_id', $idInstructor);
+        })
+            ->paginate(10);
         return view('backend.course.courses.indexForAdmin', compact('course'));
     }
 
